@@ -1,0 +1,439 @@
+// Modified by Vihang Kale
+// Modified on:27/12/2021
+// Modification : line 34 and 246 changes
+
+.modal
+  display flex; /* Hidden by default */
+  position fixed; /* Stay in place */
+  z-index 99999; /* Sit on top */
+  left 0;
+  top 0;
+  width 96%; /* Full width */
+  height 100%; /* Full height */
+  overflow hidden; /* Enable scroll if needed */
+  background-color rgb(0,0,0); /* Fallback color */
+  background-color rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  .modal-content
+    //margin 10% auto; /* 10% from the top and centered */
+    padding 0
+    width: calc(100% - 130px);
+    position: fixed;
+    //left: 50%;
+    top: 0;
+    height: 100%;
+    transform: translateX(100%);
+    transition: transform .5s ease;
+    &.is-extra-large
+      width: 80% !important
+    &.is-large
+      width: 60% !important
+    &.is-large-medium
+      width: 70% !important
+    &.is-medium {
+      width: 50% !important
+    }
+      	// modified by Vihang
+    // modifield on 14/03/2022
+    // modification:new modal size
+    &.is-medium-right
+      width: 50% !important
+    &.is-small
+      width: 40% !important
+    &.is-small-right
+      width:40%
+    &.is-full-width
+      width: 100% !important
+    &.is-center-modal
+      width:80% !important
+    &.is-full-height
+      height: 97.5vh !important
+      margin: 0 auto !important
+    &.is-small-screen
+      width: calc(100% - 500px);
+    header.modal-header
+      align-items: center;
+      box-sizing: border-box;
+      display: flex;
+      height: 60px;
+      padding: 0 24px;
+      border-radius: 0;
+      img {
+        width: 85px;
+        margin: 10px 0;
+      }
+      h6 {
+        font-size: 1.6em;
+        font-weight: 100;
+      }
+      a {
+        font-size: 22px;
+      }
+      padding 2px 16px
+      //background-color rgb(32, 33, 36)
+      background-color: #f0f8ff;
+      //color: #fff;
+      color: #003468;
+      align-items center
+      display flex
+      flex-shrink 0
+      //justify-content space-around
+      position relative
+      border-bottom: 1px solid #cfd7df
+    section.modal-body
+      //background-color #fff;
+      //background-color: rgb(32, 33, 36)
+      background-color: #f0f8ff;
+      color #807988
+      flex-grow 1
+      flex-shrink 1
+      //overflow auto
+      padding 20px
+      height: 85%;
+    section.modal-full-height
+      height: 100% !important;
+
+    footer.modal-footer
+      text-align right
+      background-color rgb(32, 33, 36)
+      flex-grow 1
+      flex-shrink 1
+      padding 20px
+/* The Close Button */
+.modal-body-height
+  height: 100%
+
+.close
+  color: #fff;
+  font-size: 18px !important;
+  position: absolute;
+  left: -28px;
+  width: fit-content;
+  width: -moz-fit-content;
+  padding: 10px;
+  background: var(--page-header-text-color);
+  height: 30px;
+  cursor: pointer;
+  line-height: 0.4;
+  border-radius: 50% 0 0 50%;
+  font-weight: bold;
+
+.close:hover,
+.close:focus
+  color black
+  text-decoration none
+  cursor pointer
+
+.modal-scrollable
+  max-height: 300px;
+
+@media only screen and (min-width: 48em)
+  .modal .modal-content.is-medium {
+    width: 100% !important;
+  }
+  // modified by Vihang
+  // modifield on 14/03/2022
+  // modification:new modal size
+  .is-medium-right{
+    width: 50% !important;
+  }
+
+.modal-content.minimized {
+  height: 15vh !important;
+  width: 19vw !important;
+  top: 94% !important;
+  section {
+    height: 45px !important;
+    overflow: hidden !important;
+  }
+  .modal {
+    z-index: 0 !important;
+  }
+  .right-drawer-label {
+    display: none;
+  }
+  .lead-header-container {
+    height : 45px !important;
+  }
+  .lead-left-header-container {
+    height: 45px !important;
+    min-height: 45px !important;
+    padding: 10px 0 17px 6px !important;
+  }
+  .lead-left-header-text {
+    font-size: 1.2rem !important;
+  }
+  .lead-modal {
+    padding: 0 10px !important;
+  }
+}
+
+.right19 {
+  right: 19.5% !important;
+}
+.right38 {
+  right: 38.5% !important;
+}
+.right57 {
+  right: 57.5% !important;
+}
+.right76 {
+  right: 76.5% !important;
+}
+
+// CSS for screen of modal resolutions
+
+@media only screen and (min-width: 1024px) {
+  .modal  {
+    width: 100% !important;
+    .modal-content.is-full-height {
+    height: 100.7vh !important;
+    }
+    .modal-content.minimized {
+      height: 15vh !important;
+      width: 19vw !important;
+      top: 94% !important;
+      section {
+        height: 45px !important;
+        overflow: hidden !important;
+      }
+      .modal {
+        z-index: 0 !important;
+      }
+      .right-drawer-label {
+        display: none;
+      }
+      .lead-modal {
+        padding: 0 10px !important;
+      }
+    }
+    .modal-content.maximized {
+      height: 70vh !important;
+      width: 50vw !important;
+      top: 30% !important;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 1280px)
+  .modal  {
+    width: 100% !important;
+    .modal-content.is-full-height {
+    height: 100vh !important;
+    }
+  }
+
+@media only screen and (min-width: 1920px)
+  .modal  {
+    width: 100% ;
+    .modal-content.is-full-height {
+    height: 103.5vh !important;
+    }
+  }
+
+.hide-modal {
+  //display: none;
+  left: -100%;
+  .modal-content {
+    right: -40%;
+  }
+}
+
+.show-modal {
+  display: flex;
+  .modal-content {
+    right: 0;
+    //right: 66px;
+    transform: translateX(0);
+    &.is-full-width {
+      left: 0 !important;
+    }
+    &.is-center-modal {
+      left: 10% !important;
+    }
+    &.is-extra-large{
+      right:10% !important;
+    }
+    &.is-small {
+      right:30% !important;
+    }
+    &.is-small-right {
+      right: 0 !important;
+    }
+    &.is-medium {
+      right:24% !important;
+    }
+    	// modified by Vihang
+    // modifield on 14/03/2022
+    // modification:new modal size
+    &.is-medium-right {
+      right: 0 !important;
+    }
+    &.is-large {
+      right:19% !important;
+    }
+    .is-large-medium {
+      right:0 !important
+    }
+  }
+}
+
+.form-footer {
+  padding: 16px 25px;
+  // border-top: 1px solid #cfd7df;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  left:0px;
+  background: #fff
+  z-index: 1;
+}
+
+
+.qty-input {
+	color: #000;
+	background: #fff;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	border-radius: 4px;
+	//box-shadow: 0 1em 2em -0.9em rgba(#000, 0.25);
+  width: fit-content;
+
+	.product-qty,
+	.qty-count {
+		background: transparent;
+		color: inherit;
+		font-weight: bold;
+		font-size: inherit;
+		border: none;
+		display: inline-block;
+		min-width: 0;
+		height: 2.5rem;
+		line-height: 1;
+
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.product-qty {
+		width: 50px;
+		min-width: 0;
+		display: inline-block;
+		text-align: center;
+		appearance: textfield;
+		border: 1px solid #e2e2e2;
+
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			appearance: none;
+			margin: 0;
+		}
+	}
+
+	.qty-count {
+		padding: 0;
+		cursor: pointer;
+		width: 2.5rem;
+		font-size: 1.25em;
+		overflow: hidden;
+		position: relative;
+		border: 1px solid #e2e2e2;
+
+		&:disabled {
+			color: #ccc;
+			background: #f2f2f2;
+			cursor: not-allowed;
+			border-color: transparent;
+		}
+	}
+}
+
+.right-drawer-label {
+    display: flex;
+    position: absolute;
+    left: -39px;
+    top: 17px;
+    min-width: 37px;
+    height: 38px;
+    padding-right: 5px;
+    background: var(--page-header-text-color);
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: top .3s;
+    box-shadow: inset -6px 0 8px -10px rgba(0,0,0,0.95);
+    z-index: 1;
+    //transform: translateX(-100%);
+    cursor: pointer;
+}
+
+.right-drawer-close-btn-inner:after {
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -o-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.right-drawer-close-btn-inner:before {
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    -o-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
+.right-drawer-close-btn-inner:after, .right-drawer-close-btn-inner:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    background-color: #fff;
+    content: "";
+}
+
+.right-drawer-close-btn-inner {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    margin-top: 8px;
+    margin-left: 7px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    opacity: .75;
+    transition: all 300ms ease;
+}
+
+.right-drawer-label-text {
+    display: inline-block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    height: 100%;
+    margin-left: 2px;
+    margin-right: 8px;
+    line-height: 38px;
+    vertical-align: top;
+    font-family: 'PTSerif', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.right-drawer-close-btn {
+    display: inline-block;
+    width: 34px;
+    height: 38px;
+    vertical-align: top;
+    border-radius: 19px;
+    transition: all .2s;
+}

@@ -1,0 +1,60 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip-box {
+  height: 20px;
+  vertical-align: middle;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  //bottom: 150%;
+  //left: 50%;
+  top: -10px;
+  left: 175px;
+  margin-left: -150px;
+  height: max-content;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  //top: 100%;
+  //left: 50%;
+  top: 0;
+  left: 0;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.semi-detail-tags {
+  height: 60px;
+}
+
+// modified by Vihang
+// modified at 06/05/2022
+// modification : necessary classes added for selected and not selected checklist ui revamp, alignment changes and responsive changes
+
+@media (min-width:320px) and (max-width:425px)  {
+  .TaskListDetailHeaderDisplayName {
+    font-size:16px;
+  }
+  .TaskListDetailHeaderIcon{
+    width:30px;
+    height:30px;
+  }
+}

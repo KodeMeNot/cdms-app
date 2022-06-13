@@ -1,0 +1,803 @@
+import { h } from 'preact';
+import { route } from 'preact-router';
+import { useState, useEffect } from 'preact/hooks';
+import queryString from 'query-string';
+import axios from 'axios';
+import CONSTANTS from '../../lib/constants';
+import { AppStore } from '../../lib/store';
+import { passwordErrorMessageText } from '../../lib/utils';
+
+/*
+  Reset Password
+  Created By: Yashvi
+  Created On: 7 Dec 2020
+*/
+
+const SetNewPassword = (props) => {
+  const params = queryString.parse(props.matches.token);
+  let token = ((props.url).split('='))[1];
+  const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$/
+  let [passwordErrorMessage, setPasswordErrorMessage] = useState('Password must contain atleast one');
+  const [isPasswordEmpty, setIsPasswordEmpty] = useState(true);
+  const [isPasswordCriteriaMismatched, setIsPasswordCriteriaMismatched] = useState(false);
+  const [isNewPasswordSet, setIsNewPasswordSet] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const [isLoaderDisplayed, setIsLoaderDisplayed] = useState(false);
+  const [isOverlayDisplayed, setIsOverlayDisplayed] = useState(false);
+  const [isVerificationLinkExpired, setIsVerificationLinkExpired] = useState(false);
+  const [isVerificationLinkSent, setIsVerificationLinkSent] = useState(false);
+  const [isLinkAndIDMismatched, setIsLinkAndIDMismatched] = useState(false);
+  const [isBothPasswordsMismatched, setIsBothPasswordsMismatched] = useState(false);
+  const [isLinkValid, setIsLinkValid] = useState(false);
+  const [isConfirmPasswordEmpty, setIsConfirmPasswordEmpty] = useState(false);
+  const [password, setPassword] = useState(false);
+  const [isPasswordSameAsBefore, setIsPasswordSameAsBefore] = useState(false);
+  const [isFocusInResetPassword, setIsFocusInResetPassword] = useState(false);
+  const [isFocusInConfirmPassword, setIsFocusInConfirmPassword] = useState(false);
+  const [confirmPassword, setIsConfirmPassword] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [isPasswordCriteriaMismatchedMsg, setIsPasswordCriteriaMismatchedMsg] = useState(false);
+  const [checkOfLengthOfCharacters, setCheckOfLengthOfCharacters] = useState(false);
+  const [lengthOfCharacters, setLengthOfCharacters] = useState(true);
+  const [crossOfLengthOfCharacters, setCrossOfLengthOfCharacters] = useState(false);
+  const [lengthOfCharactersColor, setLengthOfCharactersColor] = useState('black');
+  const [checkOfuppercaseCharacter, setCheckOfuppercaseCharacter] = useState(false);
+  const [uppercaseCharacter, setUppercaseCharacter] = useState(true);
+  const [crossOfuppercaseCharacter, setCrossOfuppercaseCharacter] = useState(false);
+  const [uppercaseCharacterColor, setUppercaseCharacterColor] = useState('black');
+  const [checkOflowercaseCharacter, setCheckOflowercaseCharacter] = useState(false);
+  const [lowercaseCharacter, setLowercaseCharacter] = useState(true);
+  const [crossOflowercaseCharacter, setCrossOflowercaseCharacter] = useState(false);
+  const [lowercaseCharacterColor, setLowercaseCharacterColor] = useState('black');
+  const [checkOfspecialCharacter, setCheckOfspecialCharacter] = useState(false);
+  const [specialCharacter, setSpecialCharacter] = useState(true);
+  const [crossOfspecialCharacter, setCrossOfspecialCharacter] = useState(false);
+  const [specialCharacterColor, setSpecialCharacterColor] = useState('black');
+  const [checkOfnumberCharacter, setCheckOfnumberCharacter] = useState(false);
+  const [numberCharacter, setNumberCharacter] = useState(true);
+  const [crossOfnumberCharacter, setCrossOfnumberCharacter] = useState(false);
+  const [numberCharacterColor, setNumberCharacterColor] = useState('black');
+  const [isUserAlreadyVerified, setIsUserAlreadyVerified] = useState(false);
+  const [isUserDeactivated, setIsUserDeactivated] = useState(false);
+  const [isUserNotFound, setIsUserNotFound] = useState(false);
+  const [isPasswordReset, setIsPasswordReset] = useState(false);
+  const [values, setValues] = useState({
+    password: '',
+    passwordConfirm: '',
+    resetToken: token
+  });
+
+  useEffect(() => {
+    if (AppStore.get('token') && Object.keys(AppStore.get('token')).length) {
+      AppStore.remove('token');
+      verifyUserToken();
+    } else {
+      verifyUserToken();
+      setTimeout(() => {
+        if (document.getElementById('setPassword')) {
+          document.getElementById('setPassword').focus();
+        }
+      }, 0);
+    }
+
+  }, []);
+
+  function setPasswordd(e) {
+    e.preventDefault();
+    if (e.target.value) {
+      setIsPasswordEmpty(false);
+    }
+    let result = passwordErrorMessageText(e.target.value, 'resetPassword');
+    if (e.target.value && !(result.capitalTested && result.smallTested && result.numberTested && result.lengthTested && result.spCharacterTested)) {
+      setPassword('');
+      setIsPasswordCriteriaMismatched(true);
+      if (result.capitalTested) {
+        setCheckOfuppercaseCharacter(true);
+        setUppercaseCharacter(false);
+        setCrossOfuppercaseCharacter(false);
+        setUppercaseCharacterColor('#406C3A');
+      }
+      else {
+        setCheckOfuppercaseCharacter(false);
+        setUppercaseCharacter(false);
+        setCrossOfuppercaseCharacter(true);
+        setUppercaseCharacterColor('red');
+      }
+      if (result.smallTested) {
+        setCheckOflowercaseCharacter(true);
+        setLowercaseCharacter(false);
+        setCrossOflowercaseCharacter(false);
+        setLowercaseCharacterColor('#406C3A');
+      }
+      else {
+        setCheckOflowercaseCharacter(false);
+        setLowercaseCharacter(false);
+        setCrossOflowercaseCharacter(true);
+        setLowercaseCharacterColor('red');
+      }
+      if (result.numberTested) {
+        setCheckOfnumberCharacter(true);
+        setNumberCharacter(false);
+        setCrossOfnumberCharacter(false);
+        setNumberCharacterColor('#406C3A');
+      }
+      else {
+        setCheckOfnumberCharacter(false);
+        setNumberCharacter(false);
+        setCrossOfnumberCharacter(true);
+        setNumberCharacterColor('red');
+      }
+      if (result.spCharacterTested) {
+        setCheckOfspecialCharacter(true);
+        setSpecialCharacter(false);
+        setCrossOfspecialCharacter(false);
+        setSpecialCharacterColor('#406C3A');
+      }
+      else {
+        setCheckOfspecialCharacter(false);
+        setSpecialCharacter(false);
+        setCrossOfspecialCharacter(true);
+        setSpecialCharacterColor('red');
+      }
+      if (result.lengthTested) {
+        setCheckOfLengthOfCharacters(true);
+        setLengthOfCharacters(false);
+        setCrossOfLengthOfCharacters(false);
+        setLengthOfCharactersColor('#406C3A');
+      }
+      else {
+        setCheckOfLengthOfCharacters(false);
+        setLengthOfCharacters(false);
+        setCrossOfLengthOfCharacters(true);
+        setLengthOfCharactersColor('red');
+      }
+    }
+    else if (!e.target.value) {
+      setPassword('');
+      setIsPasswordCriteriaMismatched(false);
+      setIsPasswordCriteriaMismatchedMsg(false);
+      setCheckOfLengthOfCharacters(false);
+      setLengthOfCharacters(true);
+      setCrossOfLengthOfCharacters(false);
+      setLengthOfCharactersColor('black');
+      setCheckOfnumberCharacter(false);
+      setNumberCharacter(true);
+      setCrossOfnumberCharacter(false);
+      setNumberCharacterColor('black');
+      setCheckOfspecialCharacter(false);
+      setSpecialCharacter(true);
+      setCrossOfspecialCharacter(false);
+      setSpecialCharacterColor('black');
+      setCheckOflowercaseCharacter(false);
+      setLowercaseCharacter(true);
+      setCrossOflowercaseCharacter(false);
+      setLowercaseCharacterColor('black');
+      setCheckOfuppercaseCharacter(false);
+      setUppercaseCharacter(true);
+      setCrossOfuppercaseCharacter(false);
+      setUppercaseCharacterColor('black');
+    }
+    else {
+      setPassword(e.target.value);
+      setIsPasswordCriteriaMismatched(false);
+      setIsPasswordCriteriaMismatchedMsg(false);
+      setIsPasswordEmpty(false);
+      setCheckOfLengthOfCharacters(true);
+      setLengthOfCharacters(false);
+      setCrossOfLengthOfCharacters(false);
+      setLengthOfCharactersColor('#406C3A');
+      setCheckOfnumberCharacter(true);
+      setNumberCharacter(false);
+      setCrossOfnumberCharacter(false);
+      setNumberCharacterColor('#406C3A');
+      setCheckOfspecialCharacter(true);
+      setSpecialCharacter(false);
+      setCrossOfspecialCharacter(false);
+      setSpecialCharacterColor('#406C3A');
+      setCheckOflowercaseCharacter(true);
+      setLowercaseCharacter(false);
+      setCrossOflowercaseCharacter(false);
+      setLowercaseCharacterColor('#406C3A');
+      setCheckOfuppercaseCharacter(true);
+      setUppercaseCharacter(false);
+      setCrossOfuppercaseCharacter(false);
+      setUppercaseCharacterColor('#406C3A');
+    }
+  }
+
+  async function verifyUserToken() {
+    await axios.put(`${CONSTANTS.API_URL}/api/v1/verifyToken`, { resetPasswordToken: token }
+    ).then(response => {
+      console.log(response,'DDDDDDDDDDDDDDD');
+      setIsLinkValid(true);
+      if (response.data && response.data.statusCode) {
+        if (response.data.statusCode === 900 || (response.data.statusCode === 820 && response.data.message !== "User not Found.")) {
+          return setIsVerificationLinkExpired(true);
+        }
+        if (response.data.statusCode === 805) {
+          return setIsUserAlreadyVerified(true);
+          //route('/verifyEnterPassword?userAlreadyVerified=true');
+        }
+        if (response.data.statusCode === 701) {
+          return setIsUserDeactivated(true);
+          //route('/emailChecks?userDeactivated=true');
+        }
+        if (response.data.statusCode === 800) {
+          return setIsUserNotFound(true);
+          //route('/emailChecks?userNotFound=true');
+        }
+        if (response.data.statusCode === 820 && response.data.message === "User not Found.") {
+          console.log('4444444444444');
+          setIsLinkValid(false);
+          return setIsUserNotFound(true);
+          //route('/emailChecks?userNotFound=true');
+        }
+        if (response.data.user) {
+          if (response.data.user.email) {
+            setUserEmail(response.data.user.email);
+            AppStore.set('userEmail', response.data.user.email);
+          } else if (response.data.user.mobile) {
+            setUserEmail(response.data.user.mobile);
+            AppStore.set('userEmail', response.data.user.mobile);
+          }
+          setUserName(response.data.user.displayName);
+          AppStore.set('userName', response.data.user.displayName);
+        } else {
+          AppStore.remove('userEmail', '');
+          AppStore.remove('userName', '');
+        }
+
+      }
+    }).catch(error => {
+      if (error.response.data.statusCode === 900) {
+        setUserEmail(error.response.data.message);
+        setUserName('');
+        AppStore.set('userEmail', error.response.data.message);
+        AppStore.set('userName', '');
+        setIsVerificationLinkExpired(true);
+      }
+    });
+  }
+
+  function setNewPassword(e) {
+    e.preventDefault();
+    document.getElementById('setPassword').focus();
+    setIsPasswordEmpty(false);
+    if (!e.target.newPassword.value) {
+      setIsPasswordEmpty(true);
+    }
+    if (isPasswordCriteriaMismatched) {
+      return setIsPasswordCriteriaMismatchedMsg(true);
+    }
+    // if (!isPasswordCriteriaMismatched) {
+    setIsPasswordCriteriaMismatchedMsg(false);
+    // }
+    //Condition to check whether password criteria is mismatched - set isPasswordCriteriaMismatched to true and return
+    setIsNewPasswordSet(true);
+    setIsPasswordVisible(false);
+    setIsLoaderDisplayed(true);
+    setIsOverlayDisplayed(true);
+    setTimeout(() => {
+      setIsLoaderDisplayed(false);
+      setIsOverlayDisplayed(false);
+    }, 300);
+    setTimeout(() => {
+      if (isNewPasswordSet && document.getElementById('setConfirmPassword')) {
+        document.getElementById('setConfirmPassword').focus();
+      }
+    }, 600);
+  }
+
+  function togglePasswordVisibility() {
+    setIsPasswordVisible(!isPasswordVisible);
+  }
+
+  function toggleConfirmPasswordVisibility() {
+    setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+  }
+
+  function toggleResetPasswordIcon() {
+    setIsFocusInResetPassword(!isFocusInResetPassword);
+  }
+
+  function toggleConfirmPasswordIcon() {
+    setIsFocusInConfirmPassword(!isFocusInConfirmPassword);
+  }
+
+  function confirmPasswordd(e) {
+    e.preventDefault();
+    document.getElementById('setConfirmPassword').focus();
+    setIsConfirmPasswordEmpty(false);
+    setIsBothPasswordsMismatched(false);
+
+    if (!e.target.confirmPassword.value) {
+      return setIsConfirmPasswordEmpty(true);
+    }
+    console.log(e.target.prevNewPassword.value, e.target.confirmPassword.value);
+    if (e.target.prevNewPassword.value !== e.target.confirmPassword.value) {
+      return setIsBothPasswordsMismatched(true);
+    }
+    axios.post(`${CONSTANTS.API_URL}/api/v1/resetPassword`,
+      {
+        newPassword: e.target.prevNewPassword.value,
+        confirmNewPassword: e.target.confirmPassword.value,
+        resetToken: token
+      }
+    ).then(async response => {
+      await axios.put(`${CONSTANTS.API_URL}/api/v1/user/pageVisitUserInformation`, { action: 'reset password', email: userEmail });
+      setIsPasswordReset(true);
+      console.log(response);
+    }).catch(error => {
+      if (error.response && error.response.data) {
+        console.log(error.response.data.message);
+      } else {
+        console.log('Something Went Wrong', error);
+      }
+    });
+  }
+
+  function setConfirmPassword(e) {
+    e.preventDefault();
+    setIsConfirmPassword(e.target.value);
+    if (e.target.value) {
+      setIsConfirmPasswordEmpty(false);
+    }
+    if ((password === confirmPassword) || !e.target.value) {
+      setIsBothPasswordsMismatched(false);
+    }
+  }
+
+  function hideConfirmPasswordField() {
+    setIsNewPasswordSet(false)
+    setIsConfirmPasswordVisible(false);
+    setIsPasswordSameAsBefore(false);
+    setIsPasswordVisible(false);
+    setIsConfirmPasswordEmpty(false);
+    setIsBothPasswordsMismatched(false);
+    setTimeout(() => {
+      if (!isNewPasswordSet && document.getElementById('setPassword')) {
+        document.getElementById('setPassword').focus();
+      }
+    }, 0);
+  }
+
+  /*
+      Modified By: Vihang
+      Modified On: 3 Feb 2022
+      Modification: added new class and name for the root div auth-container-form-body, added min height for auth form, line break added for welcome message and minor changes, changes at line 354,357,371
+  */
+  return (
+    <div class="auth-container-form-body" >
+      <div style="position: absolute;width: 100%;height: 100%;background: #00000047;z-index: 0;"> </div>
+      {
+        !isVerificationLinkExpired && !isLinkAndIDMismatched && isLinkValid && (
+          <div class="auth-container-form min-h-70vh" style='z-index: 2;'>
+            <div class={'loader-bar tenant-brand-color' + (isLoaderDisplayed ? ' start' : ' no-color')} />
+            <div class={'go-back ' + (!isNewPasswordSet ? ' visibility-none' : '')} onClick={(e) => hideConfirmPasswordField(e)}>
+              <em class="icon icon-arrow-1-left" />
+              <p>Back</p>
+            </div>
+            <div class={'inner-container-form set-form-container' + (!isNewPasswordSet ? ' show-container' : ' hide-container')}>
+              <div class="welcome-block">
+                <p class='color-black'>
+                  Welcome, <br/> {userName}
+                </p>
+              </div>
+              { //Modified By: Haresh.
+                //Modified On: 7 Sept 2021.
+                //Modification: added black color
+              }
+              <div class="description-block">
+                <p class='color-black'>
+                  Please create your password in the field
+                  below to authenticate your account
+                </p>
+              </div>
+              <div class="input-field-value">
+                <p class='color-black'> {userEmail}</p>
+                <img class="email-svg-text" src="/assets/images/Email.svg" />
+              </div>
+              <form onSubmit={(e) => setNewPassword(e)}>
+                <div class="input-field">
+                  <input id='setPassword' type={isPasswordVisible ? 'text' : 'password'} name="newPassword" placeholder="Create Your Password" autofocus onInput={(e) => setPasswordd(e)} disabled={isNewPasswordSet} onfocusin={(e) => toggleResetPasswordIcon(e)} onfocusout={(e) => toggleResetPasswordIcon(e)} />
+                  <svg class="lock-svg-input-focus center-lock" width="18" height="18">
+                    <path xmlns="http://www.w3.org/2000/svg" class="st0" d="M3.6,7.6L3.4,8.9c0,0.1,0.1,0.2,0.2,0.3c0,0,0,0,0,0h0.9c0.1,0,0.2-0.1,0.2-0.2c0,0,0,0,0,0L4.7,7.6  C4.9,7.4,5,7.1,5,6.8C5,6.3,4.6,5.9,4.1,6C3.6,6,3.2,6.4,3.2,6.8C3.2,7.1,3.3,7.4,3.6,7.6z M4.1,6.4c0.3,0,0.5,0.2,0.5,0.5  c0,0.2-0.1,0.3-0.3,0.4c-0.1,0-0.1,0.1-0.1,0.2l0.1,1.2H3.9L4,7.5c0-0.1,0-0.2-0.1-0.2C3.7,7.2,3.6,6.9,3.7,6.7  C3.8,6.5,3.9,6.4,4.1,6.4L4.1,6.4z" style={isFocusInResetPassword ? 'fill:#353535' : 'fill:#555555'} />
+                    <path xmlns="http://www.w3.org/2000/svg" class="st0" d="M8,4.1H7.3V3.2C7.4,1.4,6-0.1,4.2-0.1S1,1.2,0.9,2.9c0,0.1,0,0.2,0,0.3v0.9H0.2C0.1,4.1,0,4.2,0,4.3v5.7  C0,10.6,0.4,11,0.9,11h6.4c0.5,0,0.9-0.4,0.9-0.9V4.3C8.2,4.2,8.1,4.1,8,4.1C8,4.1,8,4.1,8,4.1z M1.4,3.2c0-1.5,1.2-2.7,2.7-2.7  c1.5,0,2.7,1.2,2.7,2.7v0.9l0,0V3.2C6.7,1.8,5.5,0.6,4.1,0.5C2.7,0.6,1.5,1.8,1.4,3.2v0.9l0,0V3.2z M6.9,3.2v0.9H1.4V3.2  c0.3-1.3,1.4-2.4,2.7-2.7C5.5,0.8,6.5,1.9,6.9,3.2z M7.8,10.1c0,0.3-0.2,0.5-0.5,0.5H0.9c-0.3,0-0.5-0.2-0.5-0.5V4.6h7.3V10.1z" style={isFocusInResetPassword ? 'fill:#353535' : 'fill:#555555'} />
+                  </svg>
+                  {
+                    !isPasswordVisible && (
+                      <img class="open-eye-svg cursor-pointer center-eye" src="/assets/images/Open_Eye.svg" onClick={(e) => togglePasswordVisibility(e)} />
+                    )
+                  }
+                  {
+                    isPasswordVisible && (
+                      <img class="unseen-eye-svg center-eye cursor-pointer" src="/assets/images/Unseen_Eye.svg" onClick={(e) => togglePasswordVisibility(e)} />
+                    )
+                  }
+                </div>
+                <div class="button-block">
+                  {
+                    isPasswordEmpty && (
+                      <p class="error-message">
+                        <em class="icon icon-exclamation" /> Please create a password
+                      </p>
+                    )
+                  }
+                  {
+                    isPasswordCriteriaMismatchedMsg && (
+                      <p class="error-message">
+                        <em class="icon icon-exclamation" /> Password doesn’t meet the criteria
+                      </p>
+                    )
+                  }
+                  {!isNewPasswordSet &&
+                    <p class="forgot-passwprd cursor-text">
+                      Password must include:
+                    <ul style='list-style-type: none;'>
+                        <li style={`color:${lengthOfCharactersColor}`}>
+                          {
+                            lengthOfCharacters && (
+                              <span class='list-dot' />
+                            )
+                          }
+                          {
+                            crossOfLengthOfCharacters && (
+                              <img id='crossOfLengthOfCharacters' class="red-cross" src='/assets/icons/passwordCheck/Red_Cross.svg' />
+                            )
+                          }
+                          {
+                            checkOfLengthOfCharacters && (
+                              <img id='checkOfLengthOfCharacters' class="green-check" src='/assets/icons/passwordCheck/Green_Check.svg' />
+                            )
+                          }
+                       8 to 15 characters</li>
+                        <li style={`color:${uppercaseCharacterColor}`}>
+                          {
+                            uppercaseCharacter && (
+                              <span class='list-dot' />
+                            )
+                          }
+                          {
+                            crossOfuppercaseCharacter && (
+                              <img id='crossOfuppercaseCharacter' class="red-cross" src='/assets/icons/passwordCheck/Red_Cross.svg' />
+                            )
+                          }
+                          {
+                            checkOfuppercaseCharacter && (
+                              <img id='checkOfuppercaseCharacter' class="green-check" src='/assets/icons/passwordCheck/Green_Check.svg' />
+                            )
+                          }
+                       one UPPERCASE letter (A - Z)</li>
+
+                        <li style={`color:${lowercaseCharacterColor}`}>
+                          {
+                            lowercaseCharacter && (
+                              <span class='list-dot' />
+                            )
+                          }
+                          {
+                            crossOflowercaseCharacter && (
+                              <img id='crossOflowercaseCharacter' class="red-cross" src='/assets/icons/passwordCheck/Red_Cross.svg' />
+                            )
+                          }
+                          {
+                            checkOflowercaseCharacter && (
+                              <img id='checkOflowercaseCharacter' class="green-check" src='/assets/icons/passwordCheck/Green_Check.svg' />
+                            )
+                          }
+                       one LOWERCASE letter (a - z)</li>
+
+                        <li style={`color:${numberCharacterColor}`}>
+                          {
+                            numberCharacter && (
+                              <span class='list-dot' />
+                            )
+                          }
+                          {
+                            crossOfnumberCharacter && (
+                              <img id='crossOfnumberCharacter' class="red-cross" src='/assets/icons/passwordCheck/Red_Cross.svg' />
+                            )
+                          }
+                          {
+                            checkOfnumberCharacter && (
+                              <img id='checkOfnumberCharacter' class="green-check" src='/assets/icons/passwordCheck/Green_Check.svg' />
+                            )
+                          }
+                       one Number (0 - 9)</li>
+
+                        <li style={`color:${specialCharacterColor}`}>
+                          {
+                            specialCharacter && (
+                              <span class='list-dot' />
+                            )
+                          }
+                          {
+                            crossOfspecialCharacter && (
+                              <img id='crossOfspecialCharacter' class="red-cross" src='/assets/icons/passwordCheck/Red_Cross.svg' />
+                            )
+                          }
+                          {
+                            checkOfspecialCharacter && (
+                              <img id='checkOfspecialCharacter' class="green-check" src='/assets/icons/passwordCheck/Green_Check.svg' />
+                            )
+                          }
+                       one SPECIAL character (!,@, #, $, %, ^ etc.)</li>
+
+                      </ul>
+                    </p>
+                  }
+                  {
+                    isPasswordSameAsBefore && (
+                      <p class="error-message">
+                        <em class="icon icon-exclamation" /> Password cannot be the same as your last two passwords
+                      </p>
+                    )
+                  }
+                  {/*
+                <p class="forgot-passwprd">
+                  Password must include:
+                  <ul>
+                    <li>8 to 15 characters</li>
+                    <li>one UPPERCASE letter (A - Z)</li>
+                    <li>one LOWERCASE letter (a - z)</li>
+                    <li>one Number (0 - 9)</li>
+                    <li>one SPECIAL character (!,@, #, $, %, ^ etc.)</li>
+                  </ul>
+                </p>
+                */}
+                  <button type="submit" class={'next-button tenant-brand-color' + (!password ? ' invalid-bg' : '')}>Confirm</button>
+                </div>
+              </form>
+            </div>
+            {/*
+                Modified By: Vihang
+                Modified On: 3 Feb 2022
+                Modification: added padding top, height auto and email icon added for confimr password page
+            */}
+            <div class={'inner-container-form set-confirm-form-container p-t-10' + (isNewPasswordSet ? ' show-container' : ' hide-container')}>
+              <div class="welcome-block h-auto">
+                {
+                  //Modified By: Haresh.
+                  //Modified On: 7 Sept 2021.
+                  //Modification: added font size and color
+                }
+                <p class='color-black fs-1halfrem'>
+                   {/*
+                      Modified By: Vihang
+                      Modified On: 5 Feb 2022
+                      Modification: font size changed for please confirm password text and margin top added for email input field
+                  */} 
+                  {userName}<br /> <span class="f-w-400 fs-14">Please confirm your password</span>
+                </p>
+              </div>
+              <div class="input-field-value m-t-15">
+                <p>{userEmail}</p>
+                <img class="email-svg-text" src="/assets/images/Email.svg" />
+              </div>
+              <form onSubmit={(e) => confirmPasswordd(e)}>
+                <div class="input-field">
+                    <input value={password} type={isPasswordVisible ? 'text' : 'password'} name="prevNewPassword" placeholder="Create Your Password" disabled />
+                    <svg class="lock-svg-input-focus center-lock" width="18" height="18">
+                      <path xmlns="http://www.w3.org/2000/svg" class="st0" d="M3.6,7.6L3.4,8.9c0,0.1,0.1,0.2,0.2,0.3c0,0,0,0,0,0h0.9c0.1,0,0.2-0.1,0.2-0.2c0,0,0,0,0,0L4.7,7.6  C4.9,7.4,5,7.1,5,6.8C5,6.3,4.6,5.9,4.1,6C3.6,6,3.2,6.4,3.2,6.8C3.2,7.1,3.3,7.4,3.6,7.6z M4.1,6.4c0.3,0,0.5,0.2,0.5,0.5  c0,0.2-0.1,0.3-0.3,0.4c-0.1,0-0.1,0.1-0.1,0.2l0.1,1.2H3.9L4,7.5c0-0.1,0-0.2-0.1-0.2C3.7,7.2,3.6,6.9,3.7,6.7  C3.8,6.5,3.9,6.4,4.1,6.4L4.1,6.4z" style={'fill:#555555'} />
+                      <path xmlns="http://www.w3.org/2000/svg" class="st0" d="M8,4.1H7.3V3.2C7.4,1.4,6-0.1,4.2-0.1S1,1.2,0.9,2.9c0,0.1,0,0.2,0,0.3v0.9H0.2C0.1,4.1,0,4.2,0,4.3v5.7  C0,10.6,0.4,11,0.9,11h6.4c0.5,0,0.9-0.4,0.9-0.9V4.3C8.2,4.2,8.1,4.1,8,4.1C8,4.1,8,4.1,8,4.1z M1.4,3.2c0-1.5,1.2-2.7,2.7-2.7  c1.5,0,2.7,1.2,2.7,2.7v0.9l0,0V3.2C6.7,1.8,5.5,0.6,4.1,0.5C2.7,0.6,1.5,1.8,1.4,3.2v0.9l0,0V3.2z M6.9,3.2v0.9H1.4V3.2  c0.3-1.3,1.4-2.4,2.7-2.7C5.5,0.8,6.5,1.9,6.9,3.2z M7.8,10.1c0,0.3-0.2,0.5-0.5,0.5H0.9c-0.3,0-0.5-0.2-0.5-0.5V4.6h7.3V10.1z" style={'fill:#555555'} />
+                    </svg>
+                    {
+                      !isPasswordVisible && (
+                        <img class="open-eye-svg center-eye cursor-pointer center-eye" src="/assets/images/Open_Eye.svg" onClick={(e) => togglePasswordVisibility(e)} />
+                      )
+                    }
+                    {
+                      isPasswordVisible && (
+                        <img class="unseen-eye-svg center-eye cursor-pointer" src="/assets/images/Unseen_Eye.svg" onClick={(e) => togglePasswordVisibility(e)} />
+                      )
+                    }
+                  </div>
+                  {/*
+                      Modified By: Vihang
+                      Modified On: 5 Feb 2022
+                      Modification: seperate input fields class added for both the confirm password and password field and removed top class for lock icon
+                  */}
+                  <div class="input-field">
+                    <input autofocus id='setConfirmPassword' type={isConfirmPasswordVisible ? 'text' : 'password'} name="confirmPassword" placeholder="Confirm Your Password" onInput={(e) => setConfirmPassword(e)} onfocusin={(e) => toggleConfirmPasswordIcon(e)} onfocusout={(e) => toggleConfirmPasswordIcon(e)}
+                    // onInput={(e) => LinkState(this, 'confirmPassword')}
+                    />
+                    {/*<em class="icon confirm-password-icon icon-lock" />*/}
+                    <svg class="lock-svg-input-focus center-lock" width="18" height="18">
+                      <path xmlns="http://www.w3.org/2000/svg" class="st0" d="M3.6,7.6L3.4,8.9c0,0.1,0.1,0.2,0.2,0.3c0,0,0,0,0,0h0.9c0.1,0,0.2-0.1,0.2-0.2c0,0,0,0,0,0L4.7,7.6  C4.9,7.4,5,7.1,5,6.8C5,6.3,4.6,5.9,4.1,6C3.6,6,3.2,6.4,3.2,6.8C3.2,7.1,3.3,7.4,3.6,7.6z M4.1,6.4c0.3,0,0.5,0.2,0.5,0.5  c0,0.2-0.1,0.3-0.3,0.4c-0.1,0-0.1,0.1-0.1,0.2l0.1,1.2H3.9L4,7.5c0-0.1,0-0.2-0.1-0.2C3.7,7.2,3.6,6.9,3.7,6.7  C3.8,6.5,3.9,6.4,4.1,6.4L4.1,6.4z" style={isFocusInConfirmPassword ? 'fill:#353535' : 'fill:#555555'} />
+                      <path xmlns="http://www.w3.org/2000/svg" class="st0" d="M8,4.1H7.3V3.2C7.4,1.4,6-0.1,4.2-0.1S1,1.2,0.9,2.9c0,0.1,0,0.2,0,0.3v0.9H0.2C0.1,4.1,0,4.2,0,4.3v5.7  C0,10.6,0.4,11,0.9,11h6.4c0.5,0,0.9-0.4,0.9-0.9V4.3C8.2,4.2,8.1,4.1,8,4.1C8,4.1,8,4.1,8,4.1z M1.4,3.2c0-1.5,1.2-2.7,2.7-2.7  c1.5,0,2.7,1.2,2.7,2.7v0.9l0,0V3.2C6.7,1.8,5.5,0.6,4.1,0.5C2.7,0.6,1.5,1.8,1.4,3.2v0.9l0,0V3.2z M6.9,3.2v0.9H1.4V3.2  c0.3-1.3,1.4-2.4,2.7-2.7C5.5,0.8,6.5,1.9,6.9,3.2z M7.8,10.1c0,0.3-0.2,0.5-0.5,0.5H0.9c-0.3,0-0.5-0.2-0.5-0.5V4.6h7.3V10.1z" style={isFocusInConfirmPassword ? 'fill:#353535' : 'fill:#555555'} />
+                    </svg>
+                    {/*
+                      Modified By: Vihang
+                      Modified On: 5 Feb 2022
+                      Modification: removed top class for open eye images
+                  */}
+                    {
+                      !isConfirmPasswordVisible && (
+                        <img class="open-eye-svg center-eye cursor-pointer" src="/assets/images/Open_Eye.svg" onClick={(e) => toggleConfirmPasswordVisibility(e)} />
+                      )
+                    }
+                    {
+                      isConfirmPasswordVisible && (
+                        <img class="unseen-eye-svg center-eye cursor-pointer" src="/assets/images/Unseen_Eye.svg" onClick={(e) => toggleConfirmPasswordVisibility(e)} />
+                      )
+                    }
+                  </div>
+                <div class="button-block" style="height:45px">
+                  {
+                    isConfirmPasswordEmpty && (
+                      <p class="error-message">
+                        <em class="icon icon-exclamation" /> Please confirm your password
+                      </p>
+                    )
+                  }
+                  {
+                    isBothPasswordsMismatched && (
+                      <p class="error-message">
+                        <em class="icon icon-exclamation" /> Please ensure your passwords match
+                      </p>
+                    )
+                  }
+                  <button type="submit" class={'next-button tenant-brand-color' + (!confirmPassword ? ' invalid-bg' : '')}>Confirm</button>
+
+                </div>
+                {
+                  isPasswordReset && (
+                    <p> Your Password has been reset. Please click <a href="/">here</a> to Login.</p>
+                  )
+                }
+                {
+                  isUserAlreadyVerified && (
+                    <p style="color:red"> User already Verified.</p>
+                  )
+                }
+                {
+                  isUserDeactivated && (
+                    <p style="color:red"> User is deactivated.</p>
+                  )
+                }
+                {
+                  isUserNotFound && (
+                    <p style="color:red">User not found.</p>
+                  )
+                }
+              </form>
+            </div>
+
+            <div class="auth-conatiner-form-overlay-transition" style={isOverlayDisplayed ? 'width:100%' : 'width:0'} />
+          </div>
+        )
+      }
+      {
+        isUserNotFound && (
+          <div class="auth-container-form" style='z-index: 2;'>
+            <div class='go-back'>
+              <em class="icon icon-arrow-1-left" />
+              <p>Back</p>
+            </div>
+            <div class="inner-container-form">
+              <div class="">
+                <p class='text-black'>
+                  Oops!
+                </p>
+              </div>
+              <div class="">
+                <p class='text-black'>
+                  The verification link,<br />
+                  requested by you has invalid!
+                </p>
+              </div>
+            </div>
+            <div class="settings-block">
+              <p>English (UK)</p><em class="icon icon-arrow-1-down" />
+              <p title="Functionality yet to be defined" class="cursor-default"><span>{'?'}</span> Support</p>
+            </div>
+          </div>
+        )
+      }
+      {
+        isVerificationLinkExpired && (
+          <div class="auth-container-form" style='z-index: 2;'>
+            <div class='go-back visibility-none'>
+              <em class="icon icon-arrow-1-left" />
+              <p>Back</p>
+            </div>
+            <div class="inner-container-form">
+              <div class="welcome-block">
+                <p>
+                  Oops!
+                </p>
+              </div>
+              <div class="description-block">
+                <p>
+                  The verification link,<br />
+                  requested by you has expired
+                </p>
+              </div>
+              <div class="input-field-value">
+                <p>{userEmail}</p>
+              </div>
+              <div class="button-block">
+                {
+                  !isVerificationLinkSent && (
+                    <p class="question">
+                      Didn’t receive the verification link?
+                    </p>
+                  )
+                }
+                {
+                  !isVerificationLinkSent && (
+                    <p class="link" onClick={(e) => requestForVerificationLink(e)} style="width: 75px">
+                      Resend link
+                    </p>
+                  )
+                }
+                {
+                  isVerificationLinkSent && (
+                    <p class="question">
+                      Didn’t receive a verification email
+                    </p>
+                  )
+                }
+                {
+                  isVerificationLinkSent && (
+                    <p class="error-message no-weight fs-12">
+                      Please wait 00:29 secs to resend another verification email
+                    </p>
+                  )
+                }
+              </div>
+            </div>
+            <div class="settings-block">
+              <p>English (UK)</p><em class="icon icon-arrow-1-down" />
+              <p title="Functionality yet to be defined" class="cursor-default"><span>{'?'}</span> Support</p>
+            </div>
+          </div>
+        )
+      }
+      {
+        isLinkAndIDMismatched && (
+          <div class="auth-container-form" style='z-index: 2;'>
+            <div class='go-back visibility-none'>
+              <em class="icon icon-arrow-1-left" />
+              <p>Back</p>
+            </div>
+            <div class="inner-container-form">
+              <div class="welcome-block">
+                <p>
+                  The verification link<br />
+                  didn’t match your id
+                </p>
+              </div>
+              <div class="description-block">
+                <p>
+                  Lorem ipsum dolor sit amet, consec-<br />
+                  tetuer adipiscing elit, sed diam
+                </p>
+              </div>
+              <form onSubmit={(e) => checkEmail(e)}>
+                <div class="input-field">
+                  <input type="text" name="email" placeholder="Enter Official Email ID" autofocus />
+                  {/*<em class="icon icon-letter-mail" onInput={(e) => LinkState(this, 'email')} />*/}
+                  <img class="email-svg-input" src="/assets/images/Email.svg" />
+                </div>
+                <div class="button-block">
+                  {
+                    isEmailEmpty && (
+                      <p class="error-message">
+                        <em class="icon icon-exclamation" /> Please enter your official email id
+                      </p>
+                    )
+                  }
+                  <button type="submit" class={'next-button tenant-brand-color' + (!email ? ' invalid-bg' : '')}>Next</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  );
+};
+export default SetNewPassword;

@@ -1,0 +1,105 @@
+.newWorkSpaceCard {
+  background: var(--card-primary-color);
+  border-radius: 4px;
+  min-height: 40px;
+  height: 50px;
+  font-weight: 500;
+  .newWorkSpaceCard-count {
+    color: var(--card-primary-count);
+    font-size: 16px;
+  }
+  .newWorkSpaceCard-header {
+    color: var(--card-primary-header);
+    font-size: 12px;
+  }
+}
+.newWorkSpaceCard-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+}
+.subfilterCard {
+  //box-shadow: rgb(0 0 0 / 5%) 0.5px 0.5px 0.5px 0.5px;
+  border-radius: 4px;
+  background: var(--card-secondary-color);
+  .subfilterCard-count {
+    color: var(--card-secondary-count);
+  }
+  .subfilterCard-header {
+    color: var(--card-secondary-header);
+  }
+}
+.subfilterCardActive {
+  box-shadow: 2px 2px 5px 0px #baabba;
+}
+.Overviewworkshop {
+  height: calc(100vh - 130px);
+  position: relative;
+  padding-bottom: 40px;
+  padding-left: 2px;
+}
+.semi-detail-summary {
+  padding-top: 13px;
+}
+.semi-detail-footer {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+
+@media (min-width:320px) and (max-width:425px)  {
+	/* smartphones, iPhone, portrait 480x320 phones */
+  .isDesktop {
+  		display:none
+  }
+  .is-hide-mobile {
+    display:none
+  }
+  .headerWorkspaceHeadText {
+    font-size:16px !important;
+  }
+  .priceListButtonText {
+    font-size:12px !important
+  }
+}
+
+@media (min-width:426px) and (max-width:768px)  {
+	/* smartphones, iPhone, portrait 480x320 phones */
+  .isDesktop {
+  		display:none
+  }
+  .is-hide-mobile {
+    display:none
+  }
+  .headerWorkspaceHeadText {
+    font-size:16px !important;
+  }
+  .priceListButtonText {
+    font-size:12px !important
+  }
+}
+
+
+@media (min-width:1024px) {
+	/* big landscape tablets, laptops, and desktops */
+  .isMobile {
+      display:none
+  }
+
+  .is-hide-Desktop {
+      display:none !important
+  }
+}
+
+/*modified by Vihang
+   modifield on 16/05/2022
+   modification: display car container added  for display car checklist
+*/
+.display-car-container {
+  height: calc(100vh - 200px);
+}

@@ -1,0 +1,52 @@
+/*
+	By: Yahsvi
+	On: 10 Feb 2021
+	Modification: Pagination.
+*/
+
+.pagination-block {
+	tbody {
+		tr {
+		border-bottom: 4px #eef2f4 solid;
+		background-color: #fff;
+		height: 42px;
+		}
+		th {
+			background: #F6F8FD;
+			border: 0px;
+			padding: 0px 19px;
+			width: 15%;
+			&:nth-child(2) {
+				width: 20%;
+			}
+			&:nth-child(3) {
+				width: 40%;
+			}
+			&:nth-child(4) {
+				width: 25%;
+			}
+		}
+		.table-title {
+			z-index: 7;
+			display: inline-block;
+			overflow: hidden;
+			padding-right: 21px;
+			max-width: 100%;
+			color: #535c69;
+			text-align: left;
+			text-transform: uppercase;
+			-ms-text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			letter-spacing: .5px;
+			font-weight: 600;
+			font-size: 11px;
+			line-height: 12px;
+		}
+		 .total {
+		 	color: #2067b0;
+			cursor: pointer;
+		 }
+	}
+}

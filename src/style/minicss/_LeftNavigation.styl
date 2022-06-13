@@ -1,0 +1,367 @@
+// modified by Vihang
+// modifield on 18/02/2022
+// modfication:styling changes in left nav bar
+
+.left-nav {
+  position: fixed;
+  z-index: 9999;
+  .left-nav-li {
+    margin-bottom: 22px !important;
+  }
+  ul.outer-list {
+    position: fixed;
+    //background-color: transparent;
+    background-color: #696d76;
+    height: 100vh;
+    width: 52px;
+    top: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: width .2s ease-in-out, background .5s ease-in-out;
+    .active-menu-icon {
+      width: 33px;
+      height: 33px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,1);
+      //margin-left: 17px;
+      em, svg {
+        //padding-top: 3px !important;
+        margin-top: 2px;
+      }
+    }
+
+    // ModifiedBy: Vihang Kale
+    // Date: 07/01/2021
+    // Modification: on line 31 - 44,67,76-78,129-136,170-174: added classes for taskfilter
+
+    .active-menu-item {
+      background-color: #ffffff33;
+      //  em, svg {
+      //   //padding-top: 3px !important;
+      //   margin-left: -7px;
+      //   margin-top: 2px;
+      // }
+    }
+    .taskFilterList {
+    overflow-y:auto;
+    overflow-x:hidden;
+    height:200px;
+    visibility:hidden;
+    }
+    .left-menu {
+      height: calc(100vh - 80px);
+      li {
+        height: 33px;
+      }
+    }
+    li {
+      align-items: center;
+      padding: 5px 1.25rem;
+      //color: #fff;
+      color: #6C6D8A;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 2px;
+      margin-top: 2px;
+      p {
+        display: inherit;
+        em {
+          padding-top: 0px;
+          font-size: 20px;
+          opacity: 0.9
+        }
+      }
+      span {
+        font-size: 1rem;
+        white-space: nowrap;
+        //font-family: 'Open Sans', sans-serif;
+        opacity: 0;
+        width: 170px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 10px;
+        //margin-top: -3px;
+        transition: visibility 0s linear 300ms, opacity 300ms;
+        &.show-subNav {
+          color: rgba(255,255,255,.8);
+          font-size: 10px;
+          font-weight: bold;
+          float: right;
+          display: inline-block;
+          cursor: pointer;
+          //margin-top: 4px;
+          &:hover {
+            color: rgba(255,255,255,1);
+          }
+        }
+        &.hide-subNav {
+          color: rgba(255,255,255,.8);
+          font-size: 10px;
+          font-weight: bold;
+          float: right;
+          display: inline-block;
+          cursor: pointer;
+          margin-top: 4px;
+          &:hover {
+            color: rgba(255,255,255,1);
+          }
+        }
+      }
+      img {
+        width: 16px;
+      }
+      a {
+        color: #fff;
+        height: 20px;
+      }
+      &:hover {
+        //background: rgba(255,255,255,.1);
+      }
+    }
+    ul.inner-list {
+      background-color: transparent;
+    }
+    .li-menu-hover {
+      &:hover {
+        background: rgba(255,255,255,.1);
+      }
+    }
+    &:hover {
+      width: 200px;
+      //background-color: rgba(0,0,0,0.5);
+      opacity: 0.9;
+      background-color: #696d76;
+      .show-sub-nav-header {
+        display:block !important;
+      }
+      .left-nav-li {
+        margin-bottom: 0px !important;
+      }
+      .taskFilterList {
+        visibility: visible !important;
+      }
+      .left-menu {
+        overflow-y: hidden;
+        overflow-x: hidden;
+        li {
+          height: 34px;
+          margin-top: 0px !important;
+          margin-bottom: 1px !important;
+        }
+      }
+      .active-menu-icon {
+        em {
+          //padding-top: 3px !important;
+          margin-left: -7px;
+        }
+        width: 33px;
+        height: 33px;
+        background: rgba(255,255,255,.35);
+        margin-bottom: 2px;
+        margin-top: 2px;
+        border-radius: 100px 100px 100px 100px;
+        transition: border-radius 100ms;
+        margin-left: 4px;
+        width: fit-content;
+        span {
+          margin-top: 2px !important;
+        }
+      }
+      li span {
+        opacity: 1;
+        visibility: visible;
+        color: #fff;
+      }
+      li p em {
+        color: #fff !important;
+      }
+      li svg path{
+        fill: #fff;
+      }
+    }
+    &.left-nav-expanded {
+      width: 0;
+      background-color: rgba(0,0,0,0.5);
+      transition: width .2s ease-in-out, background .5s ease-in-out;
+      li span {
+        opacity: 1;
+        visibility: visible;
+        transition: visibility 0s linear 0s, opacity 3s;
+      }
+    }
+    &.left-nav-open {
+      width: 240px;
+      background-color: rgba(0,0,0,0.5);
+      li span {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.right-nav {
+  position: fixed;
+  z-index: 9999;
+  ul {
+    position: fixed;
+    background-color: transparent;
+    height: 100vw;
+    width: 65px;
+    top: 0px;
+    right: 0;
+    overflow: hidden;
+    transition: width .2s ease-in-out, background .5s ease-in-out;
+    border-left: 1px solid rgba(255,255,255,.1);
+    li {
+      height: 63px;
+      align-items: center;
+      color: #fff;
+      display: flex;
+      position: relative;
+      margin: 0;
+      &:hover {
+        background-color: rgba(255,255,255,.15);
+      }
+      span {
+        font-size: 1rem;
+        white-space: nowrap;
+        //font-family: 'Open Sans', sans-serif;
+        opacity: 0;
+        visibility: hidden;
+        margin-left: 10px;
+      }
+      img {
+        width: 16px;
+      }
+      em {
+        font-size: 1rem;
+        position: absolute;
+        margin: auto 0;
+      }
+    }
+  }
+}
+
+
+.left-full-nav {
+  position: fixed;
+  z-index: 9999;
+  ul.outer-full-list {
+    position: fixed;
+    background-color: rgba(240, 248, 255, 1);
+    height: 100vh;
+    width: 240px;
+    top: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: width .2s ease-in-out, background .5s ease-in-out;
+    .active-menu-icon {
+      height: 33px;
+      background: rgba(255,255,255,1);
+      margin: 0;
+      border-radius: 100px 100px 100px 100px;
+      transition: border-radius 100ms;
+      margin-left: -9px;
+      width: fit-content;
+    }
+    .left-menu {
+      height: calc(100vh - 80px);
+      //padding-left: 20px;
+      overflow-y: auto;
+      li {
+        height: 33px;
+      }
+    }
+    li {
+      align-items: center;
+      padding: 5px 1.25rem;
+      color: #003468;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3px;
+      p {
+        display: inherit;
+        em {
+          padding-top: 0px;
+          font-size: 1rem;
+          display: none;
+        }
+      }
+      span {
+        font-size: 1rem;
+        white-space: nowrap;
+        //font-family: 'Open Sans', sans-serif;
+        opacity: 1;
+        visibility: visible;
+        //margin-left: 10px;
+        transition: visibility 0s linear 300ms, opacity 300ms;
+        &.show-subNav {
+          color: rgba(255,255,255,.8);
+          font-size: 10px;
+          font-weight: bold;
+          float: right;
+          display: inline-block;
+          cursor: pointer;
+          //margin-top: 4px;
+          &:hover {
+            color: rgba(255,255,255,1);
+          }
+        }
+        &.hide-subNav {
+          color: rgba(255,255,255,.8);
+          font-size: 10px;
+          font-weight: bold;
+          float: right;
+          display: inline-block;
+          cursor: pointer;
+          margin-top: 4px;
+          &:hover {
+            color: rgba(255,255,255,1);
+          }
+        }
+      }
+      img {
+        width: 16px;
+      }
+      a {
+        color: #fff;
+        height: 20px;
+      }
+      &:hover {
+        //background: rgba(255,255,255,.1);
+      }
+    }
+    .li-menu-hover {
+      &:hover {
+        background: rgba(255,255,255,.1);
+      }
+    }
+    ul.inner-list {
+      background-color: transparent;
+    }
+    &.left-nav-expanded {
+      width: 0;
+      background-color: rgba(0,0,0,0.5);
+      transition: width .2s ease-in-out, background .5s ease-in-out;
+      li span {
+        opacity: 1;
+        visibility: visible;
+        transition: visibility 0s linear 0s, opacity 3s;
+      }
+    }
+    &.left-nav-open {
+      width: 240px;
+      background-color: rgba(0,0,0,0.5);
+      li span {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}

@@ -1,0 +1,147 @@
+.modal
+  display flex; /* Hidden by default */
+  position fixed; /* Stay in place */
+  z-index 99; /* Sit on top */
+  left 0;
+  top 0;
+  width 100%; /* Full width */
+  height 100%; /* Full height */
+  overflow hidden; /* Enable scroll if needed */
+  background-color rgb(0,0,0); /* Fallback color */
+  background-color rgba(0,0,0,0.4); /* Black w/ opacity */
+  .modal-content
+    //margin 10% auto; /* 10% from the top and centered */
+    padding 0
+    width 76.5%;
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    //position: fixed;
+    //left: 25%;
+    //top: 25%;
+    height: fit-content;
+    border-radius: 5px;
+    box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+    //transform: translateX(100%);
+    //transition: transform 1.5s ease;
+    &.is-extra-large
+      width: 80% !important
+    &.is-large
+      width: 60% !important
+    &.is-medium
+      width: 90% !important
+    &.is-small
+      width: 30% !important
+      &.is-mini-small
+      width: 20% !important
+    &.is-full-width
+      width: 100% !important
+    &.is-center-modal
+      width:80% !important
+    &.is-full-height
+      height: 97.5vh !important
+      margin: 0 auto !important
+    header.modal-header
+      h6 {
+        font-size: 1.3em;
+
+      }
+      a {
+        font-size: 22px;
+      }
+      border-radius: 5px 5px 0 0
+      padding 20px 20px
+      background-color #fff
+      color #008ad2
+      align-items center
+      display flex
+      flex-shrink 0
+      justify-content space-between
+      position relative
+      //border-bottom: 1px solid #cfd7df
+    section.modal-body
+      background-color #fff
+      flex-grow 1
+      flex-shrink 1
+      //overflow auto
+      padding 20px
+      //height: 100%;
+      height: 60vh;
+    footer.modal-footer
+      border-radius: 0 0 5px 5px
+      text-align right
+      background-color #fff
+      flex-grow 1
+      flex-shrink 1
+      padding 10px
+/* The Close Button */
+.modal-body-height
+  height: 100%
+
+.close
+  color #008ad2
+  position: absolute;
+  right: 20px;
+  font-size: 2rem !important;
+  font-weight bold
+
+.close:hover,
+.close:focus
+  color black
+  text-decoration none
+  cursor pointer
+
+.modal-scrollable
+  max-height: 300px;
+
+@media only screen and (max-width: 48em)
+  .modal .modal-content {
+    left: 5%;
+    right: 5%;
+    top: 5%;
+    bottom: 5%;
+  }
+  .modal .modal-content.is-medium {
+    width: 90% !important;
+    height: fit-content;
+  }
+
+.hide-modal {
+  display: none;
+  left: -100%;
+  .modal-content {
+    right: -40%;
+  }
+}
+
+.show-modal {
+  display: flex;
+  display: block;
+  .modal-content {
+    right: 0;
+    transform: translateX(0);
+    &.is-full-width {
+      left: 0 !important;
+    }
+    &.is-center-modal {
+      left: 10% !important;
+    }
+    &.is-extra-large{
+      right:10% !important;
+    }
+    &.is-small {
+      right: 23% !important;
+      top: 15%;
+      height: 45%;
+    }
+    &.is-medium {
+      right:24% !important;
+    }
+    &.is-large {
+      right:19% !important;
+    }
+    &.is-mini-small {
+      right:0 !important;
+    }
+  }
+}

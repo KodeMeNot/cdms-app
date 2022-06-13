@@ -1,0 +1,274 @@
+.right-info-panel-container {
+  border-left: 0.5px solid rgb(223, 235, 240);
+  background: rgb(105, 109, 118);
+  height: 100vh;
+  overflow-y: hidden;
+  flex-grow: 1;
+  padding: 0 1rem;
+}
+
+.right-profile-box {
+  display: flex;
+  position: relative;
+  margin-top: 18px;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 0.5px solid #dfebf0;
+  align-items: center;
+  padding-bottom: 8px;
+  flex-grow: 1
+}
+
+.right-profile-name-box {
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: #fff;
+	text-align-last: right;
+}
+
+.calenderworkshop {
+  display: flex;
+  position: relative;
+  margin-top: 10px;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 0.5px solid #dfebf0;
+  padding-bottom: 10px;
+}
+
+.activityworkshop{
+	display: flex;
+	flex-direction:column;
+  position: relative;
+  margin-top: 2em;
+  border-top: 1px solid white;
+  align-self: center;
+  color: white;
+  padding-top: 1em;
+}
+
+.iconcall{
+	display: flex;
+  position: relative;
+}
+.round_iconsworkspace{
+	display: flex;
+	width: 33px;
+	border-radius: 50%;
+	height: 30px;
+	background: lightcoral;
+	align-items: center;
+	justify-content: space-around;
+	cursor:pointer;
+	p {
+		font-size: 25px;
+  		font-weight: 600;
+  		color: white;
+	}
+}
+.dayplanworkspace, .callworkspace {
+  margin-top: 2em;
+  font-size: 12px;
+  display: flex;
+  width: 100%;
+  position: relative;
+  border: 1px solid #fff;
+  border-radius: 3%;
+  flex-direction: column;
+}
+.dayplanworkspacetext {
+  justify-content: space-around;
+  margin-top: 6%;
+  color: #fff;
+  padding-left: 5px;
+}
+.datecircletemp {
+  border-radius: 50%;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  background: rgba(141,144,153,0.82);
+  color: #fff;
+}
+
+.datecircletempActive {
+	border-radius: 50%;
+	display: flex;
+	align-items:center;
+  justify-content: center;
+	background:white;
+	height: 24px;
+	width:24px;
+	color: black;
+}
+
+.workspacedate {
+  justify-content: space-around;
+  margin-top: 1em;
+  color: #fff;
+}
+
+.count-headercall:before {
+  display: block;
+  content: url("data:image/svg+xml;charset=UTF-8, <svg xmlns='http://www.w3.org/2000/svg' version='1.1' class='NavIcon SidebarTopNavLinks-typeIcon GoalNavIcon' viewBox='0 0 40 40' width='14' height='14'><path d='M35.6,30.1l-6.2-9.6C31,18.5,32,15.9,32,13c0-6.6-5.4-12-12-12C13.4,1,8,6.4,8,13c0,2.9,1,5.5,2.7,7.6l-6.2,9.6  c-1.2,1.8-1.3,4-0.2,5.9c1,1.9,2.9,3,5.1,3h21.5c2.1,0,4-1.1,5.1-3S36.7,31.9,35.6,30.1z M11,13c0-5,4-9,9-9c5,0,9,4,9,9  c0,1.8-0.5,3.5-1.4,4.9l-2.7-4.2c-1.1-1.6-2.9-2.6-4.8-2.6c-1.9,0-3.7,1-4.8,2.6l-2.7,4.2C11.5,16.5,11,14.8,11,13z M25.5,20.2  C23.9,21.3,22.1,22,20,22s-3.9-0.7-5.5-1.9l3.2-4.8c0.5-0.8,1.4-1.2,2.3-1.2c0.9,0,1.8,0.5,2.3,1.2L25.5,20.2z M33.2,34.6  c-0.5,0.9-1.4,1.4-2.4,1.4H9.2c-1,0-1.9-0.5-2.4-1.4c-0.5-0.9-0.4-1.9,0.1-2.8l6-9.1c2,1.5,4.4,2.3,7.1,2.3c2.7,0,5.1-0.9,7.1-2.3  l6,9.1C33.6,32.6,33.7,33.7,33.2,34.6z' fill='white' /></svg>");
+  background-size: 10px 10px;
+  height: 10px;
+  width: 21px;
+  position: absolute;
+  top: -8px;
+  left: 4px;
+  background-color: #696d76;
+  padding-left: 5px;
+}
+.count-headercall:after, .count-headerdayplan:after {
+  content: attr(data-label);
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  background: #696d76;
+  color: #fff;
+  padding-right: 5px;
+	padding-left: 2px;
+}
+.count-headerdayplan::before {
+  display: block;
+  content: url("data:image/svg+xml;charset=UTF-8, <svg xmlns='http://www.w3.org/2000/svg' version='1.1' class='NavIcon SidebarTopNavLinks-typeIcon CheckNavIcon' viewBox='0 0 40 40' width='14' height='14'><path d='M20,2.5C10.4,2.5,2.5,10.4,2.5,20S10.4,37.5,20,37.5S37.5,29.6,37.5,20S29.6,2.5,20,2.5z M20,34.5C12,34.5,5.5,28,5.5,20S12,5.5,20,5.5S34.5,12,34.5,20S28,34.5,20,34.5z M27.7,15c0.6,0.6,0.6,1.5,0,2.1l-10,10c-0.2,0.2-0.6,0.3-1,0.3c-0.4,0-0.8-0.1-1.1-0.4l-4.1-4.1c-0.6-0.6-0.6-1.5,0-2.1c0.6-0.6,1.5-0.6,2.1,0l3.1,3.1l8.9-8.9C26.2,14.4,27.1,14.4,27.7,15z' fill='white' /></svg>");
+  background-size: 10px 10px;
+  height: 10px;
+  width: 21px;
+  position: absolute;
+  top: -8px;
+  left: 4px;
+  background-color: #696d76;
+  padding-left: 5px;
+}
+
+/* modified by Vihang
+   modified at 12/05/2022
+   modification : height corrections*/
+
+.recent-activities-container {
+  overflow: auto;
+  height: calc(100vh - 412px);
+ }
+
+@media(max-height:770px) {
+	.recent-activities-container {
+    height: calc(100vh - 412px);
+	 }
+}
+@media(min-height:770px) and (max-height:789px) {
+	.recent-activities-container {
+    height: calc(100vh - 412px);
+	 }
+}
+
+@media(min-height:790px) and (max-height:870px) {
+	.recent-activities-container {
+    height: calc(100vh - 412px);
+	 }
+}
+@media(min-height:871px) and (max-height:999px) {
+	.recent-activities-container {
+    height: calc(100vh - 412px);
+	 }
+}
+@media(min-height:998px) {
+	.recent-activities-container {
+    height: calc(100vh - 412px);
+	 }
+}
+
+
+
+// modified by Vihang
+// modified at 29/04/2022
+// modification : classes for notification bell icon
+
+.bell, .bell-border, .btn-bell {
+    border-radius: 50%;
+}
+
+.bell {
+    // height: 25px;
+    // width: 25px;
+    // box-shadow: -1px 2px 10px #999;
+    // background: #7844E8;
+    animation-name: col;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.bell-border {
+    height: 22px;
+    width: 22px;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    // border: 1px solid #7844E8!important;
+    animation-name: bord-pop;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    box-shadow: 2px 2px 5px #fff, -2px -2px 5px #fff;
+}
+
+.btn-bell {
+    color: white;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    animation-name: bell-ring;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bord-pop {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.9);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.9);
+        opacity: 0;
+    }
+}
+
+@keyframes col {
+    0% {
+        transform: scale(1) translate(0,0);
+    }
+    10% {
+        transform: scale(1.1) translate(0,0);
+    }
+    75% {
+        transform: scale(1) translate(0,0);
+    }
+    100% {
+        transform: scale(1) translate(0,0);
+    }
+}
+
+@keyframes bell-ring {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    5%, 15% {
+        transform: translate(-50%, -50%) rotate(25deg);
+    }
+    10%, 20% {
+        transform: translate(-50%, -50%) rotate(-25deg);
+    }
+    25%  {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}

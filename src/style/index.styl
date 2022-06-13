@@ -1,0 +1,377 @@
+@import "minicss"
+@import "orgChart"
+@import "materializeCSS"
+
+:root {
+	--tenant-color: #fff;
+	--tenant-color-opacity: rgba(0,0,0,0);
+	--plyr-video-control-color: #ffffff
+	--roboto-font: 'Roboto';
+	--button-primary: #d5352e;
+	--button-primary-hover: #d5352ee1;
+	--button-disabled-primary: #d5352ea1;
+	--button-disabled-primary-hover: #d5352ea3;
+	--button-secondary: #fff;
+	--button-secondary-hover: #efeaea;
+	--text-input-border: #d5352e;
+	--text-primary: grey;
+	--text-secondary: #4b4d51;
+	--text-white: #fff;
+	--text-grey: grey;
+	--page-header-text-color: #d5352e;
+	--page-sub-header-text-color: #708090;
+	--modal-header-text-color: #4b4d51;
+	--field-header-text-color: #4b4d51;
+	--field-value-text-color: #4b4d51;
+	--selected-bacground: #ceecea;
+	//--card-primary-color: #8ecae6;
+	--card-primary-color: #444;
+	--card-primary-header: #fff;
+	--card-primary-count: #fff;
+	--card-secondary-color: #e2e2e2;
+	--card-secondary-header: #d5352e;
+	--card-secondary-count: #8ecae6;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('/assets/static/fonts/Roboto-Light.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+		width: 7px;
+		height: 7px;
+		background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar:hover {
+		width: 12px;
+		height: 12px;
+		background-color: rgba(0, 0, 0, 0.06);
+}
+
+::-webkit-scrollbar-thumb {
+		border: 2px solid transparent;
+		box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0.24);
+		border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:active {
+		box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0.37);
+		border-radius: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: #FFF;
+	font-family: var(--roboto-font), sans-serif;
+	font-weight: 400;
+	color: var(--text-primary);
+	//overflow-y: auto;
+	//overflow-x: hidden;
+	overflow: hidden;
+	letter-spacing: 0;
+	line-height: 1.5;
+}
+
+body, button, input, optgroup, select, textarea {
+	font-family: var(--roboto-font), sans-serif;
+}
+
+label, legend {
+  display: block;
+  align-items: baseline;
+  font-size: var(--field-header-text-size);
+	color: var(--field-header-text-color);
+  font-weight: 500;
+}
+
+form label {
+	font-size: var(--field-header-text-size);
+	color: var(--field-header-text-color);
+}
+
+input[role=combobox],
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='date'],
+input[type='month'],
+input[type='month' i],
+input[type='time'],
+input[type='tel'],
+input[type='text'],
+input[type='url'],
+input[type='file'],
+textarea,
+select {
+	background-color: transparent;
+	//border: 0.1rem solid #d1d1d1;
+	//border-radius: 0.4rem;
+	border: none;
+	border-bottom: 1px solid #9e9e9e;
+	box-shadow: none;
+	box-sizing: inherit;
+	padding: 0 0.3rem;
+	width: 100%;
+	letter-spacing: 0;
+	margin-bottom: 3px !important;
+	color: var(--text-grey);
+	font-weight: normal;
+	transition: all .3s;
+	&::placeholder {
+		color: var(--text-grey);
+	}
+	&::focus {
+    border-bottom: 2px solid var(--text-input-border);
+	}
+	&::hover {
+    cursor: text;
+	}
+	&::selected {
+    background-color: var(--button-primary);
+    color: #fff;
+	}
+}
+
+p {
+	margin: 0;
+}
+
+#app {
+	height: 100%;
+	background-color:	#FFF;
+	width:	100%;
+	min-height:	100vh;
+	overflow-x: hidden;
+}
+
+.mainBodyContainer {
+	width: 100%;
+	margin: 0px auto;
+	padding: 0 0 0 0;
+	background: #fbfbfb;
+}
+
+button {
+	min-width: 75px;
+	border-radius: 4px;
+	padding: 6px;
+	height: fit-content;
+	cursor: pointer;
+	font-weight: 500;
+	border: none;
+}
+
+/* [Button Styling]
+--------------------------------------------------------------------------------
+*/
+.primary-button {
+	//background-color: var(--button-primary);
+	//color: var(--text-white);
+	background-color: var(--text-white);
+	color: var(--button-primary);
+	border: 1px solid var(--button-primary);
+
+	svg {
+		fill: var(--button-primary);
+		path {
+			fill: var(--button-primary);
+		}
+	}
+	&:hover {
+		background-color: var(--button-primary-hover);
+		color: var(--text-white);
+		svg {
+			fill: var(--text-white);
+			path {
+				fill: var(--text-white);
+			}
+		}
+	}
+}
+
+.primary-button:disabled,
+.primary-button[disabled]{
+	border: 1px solid #999999;
+	background-color: #cccccc;
+	color: #666666;
+	cursor: not-allowed;
+}
+
+.secondary-button {
+	background-color: var(--button-secondary);
+	color: var(--text-secondary);
+	border: none;
+	&:hover {
+		background-color: var(--button-secondary-hover);
+	}
+}
+
+.primary-border-button {
+	border: 1px solid var(--button-primary);
+	background-color: var(--text-white);
+	color: var(--button-primary);
+	&:hover {
+		border-color: var(--button-primary);
+		background-color: var(--button-primary);
+		color: var(--text-white);
+	}
+}
+
+.selectedbackground {background: var(--selected-bacground);}
+
+.uploaded-image {
+	display: inline-block;
+	height: 100px;
+	border-radius: 3px;
+	vertical-align: top;
+	position: relative;
+	&:not(:first-child) {
+		margin-left: 10px;
+	}
+	img {
+		width: 100% !important;
+		height: 100%;
+	}
+	input[type="file"] {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		z-index: 1;
+		cursor: pointer;
+		&::-webkit-file-upload-button {
+			cursor: pointer;
+		}
+		&::-moz-file-upload-button {
+			cursor: pointer;
+		}
+	}
+	p {
+		text-align: center;
+		//margin-top: -1px;
+		font-size: 22px;
+		color: #808080;
+		position: absolute;
+    left: 50%;
+		top: 50%;
+    transform: translate(-50%, -50%);
+	}
+	.delete-file-icon {
+		position: absolute;
+		top: -3px;
+		background: rgba(0,0,0,0.6);
+		color: #fff;
+		border-radius: 50%;
+		font-size: 12px;
+		line-height: 1;
+		padding: 0 2px 1px 3px;
+		right: -4px;
+		font-weight: 600;
+		cursor: pointer;
+		display: none;
+		transform: none;
+    left: auto;
+	}
+	&:hover .delete-file-icon {
+		display: block;
+	}
+}
+.star-mandatory-entry {
+	color:red;
+	font-size:medium
+	height:15px;
+}
+/* [Media Queries]
+--------------------------------------------------------------------------------
+*/
+@media (min-width:320px)  {
+	/* smartphones, iPhone, portrait 480x320 phones */
+
+}
+@media (min-width:481px)  {
+	/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+
+}
+@media (min-width:641px)  {
+	/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+
+}
+@media (min-width:768px)  {
+	/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+
+}
+@media (min-width:961px)  {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+
+}
+@media (min-width:1025px) {
+	/* big landscape tablets, laptops, and desktops */
+
+}
+@media (min-width:1280px) {
+	/* hi-res laptops and desktops */
+
+}
+
+/*
+          modified by Vihang
+          modified at 13/05/2022
+          modification : mobile bottom Navigation css
+    */
+
+.mobile-bottom-nav{
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:1000;
+
+	//give nav it's own compsite layer
+	will-change:transform;
+	transform: translateZ(0);
+
+	display:flex;
+
+	height:50px;
+	//border-top: 1px solid lightgrey;
+	box-shadow: 0 -2px 2px -2px lightgrey;
+	background-color:#fff;
+
+	&__item{
+		flex-grow:1;
+		text-align:center;
+		font-size:12px;
+
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+	}
+	&__item--active{
+		//dev
+		color:red;
+	}
+	&__item-content{
+		display:flex;
+		flex-direction:column;
+	}
+}

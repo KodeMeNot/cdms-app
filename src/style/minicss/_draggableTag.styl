@@ -1,0 +1,53 @@
+*/
+	modified by Vihang
+	modified on 19/05/2022
+	modification: ripple animation and drag and drop tag class
+*/
+.rippleAnimation {
+  position:relative;
+}
+
+.rippleAnimation:before {
+  animation:ripple 2s ease-out infinite;
+  border:solid 5px #f00;
+  border-radius:50%;
+  bottom:0;
+  content:"";
+  left:0;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+.rippleAnimation:after {
+  animation:rippleAnimation 2s 1s ease-out infinite;
+  border:solid 5px #f00;
+  border-radius:50%;
+  bottom:0;
+  content:"";
+  left:0;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+@keyframes rippleAnimation {
+  0% {
+    opacity:.25;
+  }
+  100% {
+    border-radius:2em;
+    opacity:0;
+    transform:scale(3);
+  }
+}
+
+  .drag-drop-floating-button {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+	  right: 240px !important;
+	  bottom: 10px !important;
+	  background:red !important;
+	  color:white !important;
+  }

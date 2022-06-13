@@ -1,0 +1,14 @@
+.home {
+	padding: 20px;
+	min-height: 100%;
+	width: 100%;
+	border-top: 20px solid red;
+}
+
+.cardHeader {
+  padding: 16px;
+}
+
+.cardBody {
+  padding: 16px;
+}

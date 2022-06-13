@@ -1,0 +1,113 @@
+.tab-links {
+  padding: 10px 10px 0;
+  margin-top: 20px;
+  .tab-links-block {
+    //border-bottom: 1px solid #808080;
+    a {
+      width:auto;
+      display: inline-block;
+      padding: 10px 20px;
+      text-align: center;
+      cursor: pointer;
+      color: #000;
+      font-weight: 600;
+      &.tab-active {
+        border-bottom: 3px solid #F08080;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+.tabs-content {
+  padding: 0 10px 10px;
+  > div:first-child {
+     //padding:10px;
+     //border:1px solid #6b8000;
+     //background-color: rgb(204, 231, 246);
+     table tbody tr {
+      background-color: #fff;
+     }
+  }
+  .list-block {
+    padding: 10px 0 0 0;
+  }
+  table thead tr {
+    background-color: #F08080;
+  }
+}
+
+.mobile-tabs {
+  .tab-links {
+    margin-top: 0;
+    padding: 10px 0 0;
+    border-top: 2px solid #bdbdbd;
+    letter-spacing: 1px;
+    .tab-links-block {
+      a {
+        width: 95px;
+        padding: 5px 0;
+        .triangle-down {
+          width: 0;
+          height: 0;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 10px solid #F08080;
+          position: absolute;
+          left: 44%;
+          top: 33px;
+          display: none;
+        }
+        &.tab-active {
+          background-color: #F08080 !important;
+          border-radius: 20px;
+          position: relative;
+          color:#fff;
+          font-weight:600;
+          .triangle-down {
+            display: block;
+          }
+        }
+        &.tab-active-minor {
+          background-color: #DCDCDC;
+          border-radius: 20px;
+          position: relative;
+          .triangle-down {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .tabs-content {
+    margin-top: 20px;
+    padding: 0;
+    .swiper-container {
+      height: 110px;
+    }
+  }
+}
+
+//Inner tabs on detail view
+.inner-tab-links {
+  //padding: 10px 10px 0;
+  //margin-top: 20px;
+  .tab-links-block {
+    border-bottom: 1px solid #e2e2e2;
+    a {
+      width:auto;
+      display: inline-block;
+      padding: 10px 20px;
+      text-align: center;
+      cursor: pointer;
+      color: #000;
+      &.inner-tab-active {
+        border-bottom: 3px solid #F08080;
+        //border-radius: 4px;
+      }
+    }
+  }
+}
+.inner-tabs-content {
+  margin-top: 20px;
+  padding: 0;
+}

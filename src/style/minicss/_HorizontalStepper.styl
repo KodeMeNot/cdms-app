@@ -1,0 +1,144 @@
+.horizontal_stepper_main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+
+  .horizontal_stepper {
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5%;
+  }
+
+  .horizontal_step--1,
+  .horizontal_step--2,
+  .horizontal_step--3,
+  .horizontal_step--4 {
+    width: 5rem;
+    padding: 0.5rem 0;
+    background: #fff;
+    color: #666;
+    text-align: center;
+  }
+  .horizontal_step--1,
+  .horizontal_step--2,
+  .horizontal_step--3 {
+    border-right: 1px solid #666;
+  }
+  .horizontal_form {
+    background: #fff;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(51, 51, 51, 0.2);
+    display: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    height: calc( 100vh - 150px);
+  }
+  .horizontal_form--header-container {
+    background: linear-gradient(to right, rgb(51, 51, 51), #919191);
+    color: #fff;
+    //height: 6rem;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .horizontal_form--header-title {
+    font-size: 1.4rem;
+  }
+
+  .horizontal_form--header-text {
+    padding: 0.5rem 0;
+  }
+
+  .horizontal_stepper_input[type="text"] {
+    padding: 0.8rem;
+    margin: auto;
+    margin-top: 0.5rem;
+    width: 20rem;
+    display: block;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 1px solid #bdbdbb;
+  }
+
+  .horizontal_form__btn {
+    background: #333;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 0.5rem 0.7rem;
+    width: 7rem;
+    margin: 1rem auto;
+    border-radius: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .horizontal_form--message-text {
+    width: 25rem;
+    background: #fff;
+    color: #444;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 1.4rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(51, 51, 51, 0.2);
+    animation: fadeIn 0.8s;
+    border-radius: 1rem;
+  }
+  .horizontal_form-active {
+    z-index: 1000;
+    display: block;
+  }
+  .horizontal_form-active-animate {
+    animation: moveRight 1s;
+  }
+  .horizontal_form-inactive {
+    display: block;
+    animation: moveLeft 1s;
+  }
+
+  .horizontal_step-active {
+    background: #666;
+    color: #fff;
+    border: 1px solid #666;
+  }
+
+  @keyframes moveRight {
+    0% {
+      transform: translateX(-27rem) scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0rem) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes moveLeft {
+    0% {
+      transform: translateX(0rem) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(27rem) scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

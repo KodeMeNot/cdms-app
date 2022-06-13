@@ -1,0 +1,354 @@
+{/*
+	Modified By: Vihang
+	Modified On: 3 Feb 2022
+	Modification: background image added on authentication pages
+*/}
+.login-container {
+  //background: #f9faff;
+  // background: #f0f8ff;
+  background: url(/assets/images/growthbg.gif) no-repeat center;
+  background-size: contain;
+	background-position: 75%;
+  color: #3a3c47;
+  line-height: 1.6;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0;
+
+  h1 {
+    //margin-top: 48px;
+    font-family: 'CenturygothicRegular', sans-serif;
+    font-size: 1.8rem;
+    line-height: 1.25;
+    font-weight: 600;
+    color: #d5352e;
+    padding: 0 0 4px 0;
+  }
+}
+
+.login-logo {
+  width: 150px;
+  margin: 25px 32px 0px
+}
+
+.login-footer {
+  align-self: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 10px;
+
+  span {
+    font-size: 0.9rem;
+    line-height: 1.33333;
+    font-weight: 600;
+    color: rgba(0,0,0,0.6);
+    margin: 8px;
+    cursor: pointer
+
+    &:hover {
+      border-bottom: 1px solid rgba(0,0,0,0.6);
+    }
+  }
+
+  h6 {
+    font-size: 0.7rem;
+    line-height: 1.33333;
+    font-weight: 600;
+    color: rgba(0,0,0,0.6);
+    margin: 8px 5px 8px 8px;
+    cursor: pointer
+
+    &:hover {
+      border-bottom: 1px solid rgba(0,0,0,0.6);
+    }
+  }
+}
+
+.login-form {
+    background: #ededed;
+    width: 340px;
+    padding: 24px 32px 32px;
+    align-self: flex-start;
+    border: 1px solid #e1e2f0;
+    border-radius: 40px;
+    box-shadow: 0 4px 12px #000;
+    transition: all 0.3s ease;
+    margin-left: 70px;
+}
+
+.login-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.login-label {
+  font-size: 12px !important;
+  color: #d5352e !important;
+}
+
+.login-title {
+  font-size: 16px !important;
+  color: #d5352e !important;
+}
+
+.login-input {
+  flex: 1;
+  padding: 10px 0 !important;
+  //border: 1px solid #d6d8e6 !important;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: all 0.2s ease-out;
+  height: auto !important;
+}
+
+/*
+	Changed height for button-block div.
+	Modified On: 12 May 2020
+	Modification: login input border width to 1 px
+*/
+.button-block {
+	height: 10px;
+	margin-top: 10px;
+}
+.login-input:focus {
+  outline: none;
+  //border: 1px solid #d5352e !important;
+  //box-shadow: inset 2px 2px 5px 0 rgba(42, 45, 48, 0.12);
+}
+
+.login-input::placeholder {
+  //color: #C8CDDF;
+  font-size: 12px !important;
+}
+
+.login-button {
+	width: auto;
+	float: right;
+	padding: 6px 4px;
+	height: auto;
+	font-weight: normal;
+	font-size: 14px;
+	background: #d5352e;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 5px;
+	transition: background 0.2s ease-out;
+}
+
+.login-button:hover {
+  background: #d5352ee1;
+}
+
+.input-field {
+	margin-bottom: 20px;
+	position: relative;
+	input {
+		height: 44px;
+		padding-left: 30px;
+		padding-right: 34px;
+		//border: none;
+		//border: 1px solid #d3d3d3;
+		background-position: 86% 69% !important;
+		&::placeholder {
+			color: #4c4c4c;
+			font-size: 12px;
+		}
+		&:active , &:focus {
+			//border: 2px solid #000;
+			&::placeholder {
+				//color: transparent;
+			}
+		}
+	}
+	.email-green-check {
+		width: 15px;
+		position: absolute;
+		top: 15px;
+		right: 10px;
+	}
+	.email-svg-input {
+		width: 14px;
+		position: absolute;
+		left: 0;
+		top: 16px;
+	}
+	.lock-svg-input {
+		width: 11px;
+		position: absolute;
+		left: 0;
+		top: 16px;
+		&.confirm-password {
+			top: 55px !important;
+		}
+	}
+	.open-eye-svg {
+		width: 15px;
+		position: absolute;
+		top: 18px;
+		right: 12px;
+		height: 15px;
+		&.center-eye {
+			top:15px !important;
+		}
+		&.confirm-password {
+			top: 59px !important;
+		}
+	}
+	.unseen-eye-svg {
+		width: 15px;
+		position: absolute;
+		top: 18px;
+		right: 12px;
+		height: 15px;
+		&.center-eye {
+			top:15px !important;
+		}
+		&.confirm-password {
+			top: 59px !important;
+		}
+	}
+	svg.email-svg-input-focus {
+		width: 14px;
+		position: absolute;
+		left: 6px;
+		top: 20px;
+		transform: scale(1.2);
+	}
+	svg.lock-svg-input-focus {
+		width: 11px;
+		position: absolute;
+		left: 12px;
+		top: 20px;
+		transform: scale(1.3);
+		&.center-lock {
+			top: 17px !important;
+		}
+		&.confirm-password-focus {
+			top: 59px !important;
+		}
+	}
+}
+.input-field-value {
+	margin-bottom: 5px;
+	position: relative;
+	&.m-b-0 {
+		margin-bottom: 0 !important;
+	}
+	p {
+		padding-left: 32px;
+		color: #4c4c4c;
+		display: inline-block;
+		font-size: 14px;
+		width: 285px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	em {
+		position: absolute;
+		left: 0px;
+		top: 2px;
+		font-size: 18px;
+		color: #808080;
+	}
+	.email-svg-text {
+		width: 14px;
+		position: absolute;
+		left: 9px;
+		top: 6px;
+	}
+}
+.courierImg,
+.catalogueImgUpdate{
+	position:relative;
+	max-width: 140px;
+	max-height:140px
+}
+
+
+.crossTip,
+.crossTipUpdate {
+	cursor: pointer;
+	display: none;
+  background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0px 5px;
+    position: absolute;
+    right: 5%;
+    top: 4%;
+}
+
+
+.crossTipNone{
+	display: none;
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding:3px 5px;
+  position: absolute;
+  right: 50%;
+    top: 0;
+}
+
+.courierImg:hover .crossTip,
+.catalogueImgUpdate:hover .crossTipUpdate {
+  display: block;
+}
+
+.error-message {
+	color: #ff0000;
+	font-size: 10px;
+	font-weight: 600;
+	em {
+		font-size: 8px;
+		font-weight: normal;
+	}
+}
+.success-message {
+	font-size: 12px;
+	font-weight: 600;
+	color: #6bb562;
+}
+
+@media(max-width: 458px) {
+  .login-form {
+    //background: #f9faff;
+    border: none;
+    box-shadow: none;
+    align-self: center;
+    margin: 0 10px;
+  }
+
+  .login-container {
+    //margin: 0 18px;
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+.login-form {
+    width: 100%;
+    max-width: 416px;
+  }
+
+  .login-logo {
+    margin: 25px 5px 0
+  }
+
+  .login-footer {
+    display: none;
+  }
+}

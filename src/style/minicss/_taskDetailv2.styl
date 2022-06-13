@@ -1,0 +1,1360 @@
+// Modified by Vihang Kale
+// Modified on:27/12/2021
+// Modification : added new task detail view style file
+
+.taskContainer {
+		overflow: auto;
+		height: 100vh;
+		margin-left: 25px;
+}
+
+.taskDetails-v2, .detailSide {
+  background-color: #fff;
+}
+
+.commentLogs {
+  margin-top: 20px;
+}
+
+.HeaderSticky {
+  position: sticky !important;
+  top: 65px !important;
+   z-index:100;
+}
+
+@media screen and (min-width:768px) {
+ .HeaderSticky {
+  position: sticky !important;
+  top: 10px !important;
+   z-index:100;
+}
+}
+
+.taskDetails-v2 {
+
+	.taskHeader {
+	    padding: 11px 13px 12px 20px;
+	    border-bottom: 1px solid #e9eaec;
+
+			#priority {
+				float: right;
+				width: 122px;
+
+				.Hpriority {
+				  display: inline-block;
+				  cursor:pointer;
+				}
+
+
+					.circle-main {
+						position: relative;
+						margin:  0px;
+						width: 36px;
+						height: 34px;
+						border-radius: 100px;
+						overflow: hidden;
+						cursor: pointer;
+						float: right;
+					  bottom: 5px;
+
+					}
+					.circle-middle {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: 22px;
+						height: 22px;
+						margin-left: -11px;
+						margin-top: -11px;
+						border-radius: 22px;
+
+						z-index: 50;
+						will-change: transform;
+					}
+					.circle-outer {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: 44px;
+						height: 44px;
+						margin-top: -22px;
+						margin-left: -22px;
+						z-index: 49;
+						background: none;
+						border: 3px solid grey;
+						border-radius: 44px;
+						transform: scale(0.78);
+						-webkit-transform: scale(0.78);
+						-moz-transform: scale(0.78);
+						-o-transform: scale(0.78);
+					}
+
+					*,
+					*:before,
+					*:after {
+						box-sizing: border-box;
+						-webkit-box-sizing: border-box;
+						-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+						-webkit-tap-highlight-color: transparent;
+						margin: 0;
+						padding: 0;
+					}
+					a,
+					a:visited,
+					a:hover {
+						color: inherit;
+						text-decoration: none;
+					}
+
+			}
+
+
+			.task-number-status {
+			    font: 300 15px/24px "IBMPlexSansRegular", sans-serif;
+			    color: #525c69;
+			    vertical-align: middle;
+			}
+	}
+
+
+	.task-detail-description-v2 {
+	    word-wrap: break-word;
+	    padding-bottom: 30px;
+	    min-height: 250px;
+	    //overflow-x: auto;
+	}
+
+
+	.task-detail-buttons-v2 {
+	    padding-top: 10px ;
+	    padding-bottom: 10px ;
+	    text-align: left;
+	    border-top: 1px solid #eef2f4;
+	    background: #fff;
+
+
+			.startBtn, .finishBtn, .delegateBtn, .resumeBtn, .deleteBtn
+			   {
+			    background-color: #bbed21;
+			    outline:0;
+			    font-size: 12px;
+			    @include transition(background-color 0.3s ease);
+			    border: 0;
+			    position: relative;
+			    padding: 5px !important;
+			    text-align: center;
+			  height:40px;
+			  width: 70px;
+			}
+
+			.startBtn{
+			  position:relative;
+			  left: 20px;
+			  bottom:15px;
+			}
+			.finishBtn {
+			    position: relative;
+			      left: 40px;
+			      bottom:15px;
+			}
+
+			.delegateBtn {
+			    position: relative;
+			      left: 60px;
+			      bottom:15px;
+			      width: 80px;
+			}
+			 .resumeBtn {
+			     position: relative;
+			       left: 80px;
+			       bottom:15px;
+			 }
+			  .deleteBtn {
+			        position: relative;
+			          left: 100px;
+			          bottom:15px;
+			          background-color: #ff0505;
+
+			  }
+	}
+}
+
+.taskTabs-v2 {
+  display: flex;
+	box-shadow: none !important;
+  flex-wrap: wrap;
+
+	input[type="hidden" i].dcH {
+	    display: none;
+	    appearance: none;
+	    background-color: initial;
+	    cursor: default;
+	    padding: initial;
+	    border: initial;
+	}
+
+	input.task-time-field-textbox, input.dcH, input.tab11, input.tab22, input.tab33 {
+			outline: 0;
+	    -webkit-writing-mode: horizontal-tb !important;
+	    text-rendering: auto;
+	    color: -internal-light-dark(black, white);
+	    letter-spacing: normal;
+	    word-spacing: normal;
+	    text-transform: none;
+	    text-indent: 0px;
+	    text-shadow: none;
+	    display: inline-block;
+	    text-align: start;
+	    appearance: auto;
+	    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+	    -webkit-rtl-ordering: logical;
+	    cursor: text;
+	    margin: 0em;
+	    font: 400 13.3333px Arial;
+	    padding: 1px 2px;
+	    border-width: 2px;
+	    border-style: inset;
+	    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+	    border-image: initial;
+	}
+
+#tab3-label, #tab2-label {
+		margin-left: 5px;
+}
+
+.task-log-date-column, .task-log-author-column, .task-log-where-column, .task-log-what-column, .task-time-date-column, .task-time-author-column, .task-time-spent-column, .task-time-comment-column {
+    font-size: 13px;
+    vertical-align: top;
+    border-bottom: 1px solid #edeef0;
+    padding: 13px 7px;
+    word-wrap: break-word;
+}
+
+
+.task-time-date-column {
+    width: 13%;
+}
+
+
+.task-time-author-column {
+    width: 24%;
+}
+
+.task-time-spent-column {
+    width: 20%;
+}
+
+.task-time-comment-column {
+    width: 43%;
+}
+
+th.task-log-date-column, th.task-log-author-column, th.task-log-where-column, th.task-log-what-column, th.task-time-date-column, th.task-time-author-column, th.task-time-spent-column, th.task-time-comment-column {
+    vertical-align: middle;
+    height: 39px;
+    padding: 0 7px;
+    background: #f0f5f6;
+    color: rgba(94,102,117,.8);
+    border: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.task-time-date-column {
+    width: 13%;
+}
+
+.task-time-author-column {
+    width: 24%;
+}
+
+.task-time-spent-column {
+    width: 20%;
+}
+
+.task-time-comment-column {
+    width: 43%;
+}
+
+.task-log-date-column, .task-log-author-column, .task-log-where-column, .task-log-what-column, .task-time-date-column, .task-time-author-column, .task-time-spent-column, .task-time-comment-column {
+    font-size: 13px;
+    vertical-align: top;
+    border-bottom: 1px solid #edeef0;
+    padding: 13px 7px;
+    word-wrap: break-word;
+}
+
+.task-time-date-column input {
+    width: 100%;
+}
+
+
+.task-time-date-column input {
+    width: 100%;
+}
+.task-time-field-textbox {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 5px;
+    border: 1px solid #c6cdd3;
+    font-size: 13px;
+    color: #000;
+}
+
+nobr {
+    white-space: nowrap;
+}
+
+.task-time-spent-hours {
+    white-space: nowrap;
+}
+
+.task-time-spent-column input {
+    width: 15px;
+}
+
+.task-time-spent-minutes {
+    white-space: nowrap;
+}
+
+.task-time-comment-container {
+    position: relative;
+    margin-right: 40px;
+}
+
+.task-time-comment-column input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.task-time-form-row {
+		display: none;
+}
+
+.task-time-form-row .task-time-comment-action {
+    top: 6px;
+}
+.task-time-comment-action {
+    display: block;
+    height: 12px;
+    top: 3px;
+    margin: auto;
+    right: -43px;
+    position: absolute;
+}
+
+
+.task-table-edit-ok {
+    display: inline-block;
+    background-position: 0 -25px;
+}
+
+.task-table-edit, .task-table-remove, .task-table-edit-ok, .task-table-edit-remove {
+    height: 12px;
+    width: 14px;
+    opacity: .5;
+    cursor: pointer;
+    background: url('/assets/images/edit.svg') no-repeat;
+    display: none;
+}
+.task-table-edit-ok {
+    background: url('/assets/images/Green_Check.svg') no-repeat -3px -540px;
+    display: inline-block;
+    margin-right: 5px;
+    height: 17px;
+    width: 17px;
+    cursor: pointer;
+}
+
+.task-table-edit-remove {
+    display: inline-block;
+    background-position: 4px -14px;
+}
+.task-table-edit, .task-table-remove, .task-table-edit-ok, .task-table-edit-remove {
+    height: 12px;
+    width: 14px;
+    opacity: .5;
+    cursor: pointer;
+    background: url('/assets/images/edit.svg') no-repeat;
+    display: none;
+}
+.task-table-edit-remove {
+    background: url('/assets/images/cross.svg') no-repeat -3px -522px;
+    display: inline-block;
+    height: 17px;
+    width: 17px;
+    cursor: pointer;
+}
+
+.task-dashed-link {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 19px;
+    font-size: 13px;
+    color: #1f67b0;
+    cursor: pointer;
+}
+
+.task-dashed-link-inner {
+    font-size: 13px;
+    border-bottom: 1px dashed rgba(31,103,176,.5);
+    cursor: pointer;
+}
+
+
+#comIn {
+	width:600px;
+	border-radius: 40px;
+	padding: 10px;
+}
+
+
+
+
+.task-switcher-text-counter {
+    background: #d2d7dc;
+    border-radius: 8px;
+    height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    color: #535c69;
+    font: normal 11px/16px "IBMPlexSansRegular",sans-serif;
+    text-align: center;
+    padding: 0 7px;
+    box-sizing: border-box;
+    min-width: 20px;
+    transition: all 220ms linear;
+}
+
+
+.task-log-table, .task-time-table {
+    min-width: 100%;
+    table-layout: fixed;
+    color: #333;
+    border-collapse: collapse;
+}
+
+table.task-log-table, table.task-time-table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+
+	colgroup.clgT {
+	    display: table-column-group;
+
+			col.task-log-author-column ,
+			col.task-log-where-column,
+			col.task-log-what-column,
+			col.task-log-date-column,
+			col.task-time-date-column,
+			col.task-time-author-column,
+			col.task-time-spent-column,
+			col.task-time-comment-column {
+			    display: table-column;
+			}
+	}
+
+
+	tbody.tbT {
+	    display: table-row-group;
+	    vertical-align: middle;
+	    border-color: inherit;
+
+					tr.hisT, tr.task-time-form-row, tr.task-time-add-link-row {
+					    display: table-row;
+					    vertical-align: inherit;
+					    border-color: inherit;
+					}
+	}
+
+
+
+
+			.task-log-date-column {
+			    width: 16%;
+			}
+			.task-log-author-column {
+			    width: 24%;
+			}
+
+			.task-log-where-column {
+			    width: 20%;
+			}
+
+			.task-log-what-column {
+			    width: 40%;
+			}
+
+			.task-log-date-column, .task-log-author-column, .task-log-where-column, .task-log-what-column, .task-time-date-column, .task-time-author-column, .task-time-spent-column, .task-time-comment-column {
+			    font-size: 13px;
+			    vertical-align: top;
+			    border-bottom: 1px solid #edeef0;
+			    padding: 13px 7px;
+			    word-wrap: break-word;
+			}
+
+
+
+
+
+
+			th.task-log-date-column, th.task-log-author-column, th.task-log-where-column, th.task-log-what-column, th.task-time-date-column, th.task-time-author-column, th.task-time-spent-column, th.task-time-comment-column {
+			    vertical-align: middle;
+			    height: 39px;
+			    padding: 0 7px;
+			    background: #f0f5f6;
+			    color: rgba(94,102,117,.8);
+			    border: 0;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			    text-align: left;
+			}
+
+			.task-log-date-column, .task-log-author-column, .task-log-where-column, .task-log-what-column, .task-time-date-column, .task-time-author-column, .task-time-spent-column, .task-time-comment-column {
+			    font-size: 13px;
+			    vertical-align: top;
+			    border-bottom: 1px solid #edeef0;
+			    padding: 13px 7px;
+			    word-wrap: break-word;
+			}
+
+
+			td.task-log-date-column,
+			td.task-log-author-column,
+			td.task-log-where-column,
+			td.task-log-what-column ,
+			td.task-time-date-column,
+			td.task-time-author-column,
+			td.task-time-spent-column,
+			td.task-time-comment-column
+			{
+			    display: table-cell;
+			    vertical-align: inherit;
+					border-top: none !important;
+					border-left: none !important;
+					border-right: none !important;
+			}
+
+
+
+}
+
+
+
+
+
+}
+
+.taskTabs-v2 > section {
+  order: 999;
+  width: 100%;
+  display: none;
+}
+.taskTabs-v2 > input {
+
+  opacity: 0;
+  position: absolute;
+}
+
+.taskTabs-v2 > input[type=radio]:checked + label {
+  background: yellow;
+}
+
+.taskTabs-v2 > input[type=radio]:checked + label + section {
+  display: unset;
+}
+
+.taskTabs-v2 > label {
+  padding: 5px 30px;
+  background: #d6dce2;
+	cursor: pointer;
+	font-weight: 400;
+}
+.taskTabs-v2 > label:last-of-type {
+  border-right: none;
+}
+.taskTabs-v2 > input[type=radio]:checked + label {
+  background: #fff;
+}
+
+.taskTabs-v2 section {
+  padding: 1em;
+	background: #fff;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #9ece00;
+  color: #fff;
+  z-index: 9999;
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px;
+  position: absolute;
+  bottom: 2%;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  animation: fadeInLeftToRight 1s ease-in-out 0s forwards;
+}
+
+@keyframes fadeInLeftToRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+
+#snackbar.snackbar-left {
+	left: 70px;
+}
+
+#snackbar.right {
+	right: 10px;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 425px)  {
+
+	#snackbar {
+		padding: 4px;
+		width:94%
+	}
+
+	#snackbar.center {
+		left: 3%;
+	}
+
+}
+
+@media screen and (min-width: 768px) {
+
+	#snackbar.center {
+		left: 40%;
+	}
+
+}
+
+
+@media screen and (min-width: 1024px) {
+
+	#snackbar.center {
+		left: 40%;
+	}
+
+}
+
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+.taskDetailCard {
+	min-height:100vh;
+	border-radius:5px;
+	align:center;
+	padding: 5px;
+	box-shadow: 0 2px 2px rgba(0,0,0,.04);
+	border:1px solid #e5e9f1
+}
+.taskDetailCard2 {
+	min-height:5vh;
+	border-radius:5px;
+	align:center;
+	padding: 5px;
+	box-shadow: 0 2px 2px rgba(0,0,0,.04);
+	border:1px solid #e5e9f1
+}
+
+.taskDetailCard2:hover {
+ 	background: #e8e8e8 ;
+}
+
+.wrapper {
+  position: absolute;
+  left: 0;
+  top:0;
+}
+
+.badge {
+  width: stretch;
+  height: stretch;
+  border-radius:5px 1px 5px 1px;
+  border: 1px solid #eee;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+  background-image: radial-gradient(center, ellipse farthest-cover, rgba(232,232,232,1) 0%, rgba(249,249,249,1) 100%);
+  padding: 7px;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1;
+  font-size: 1rem;
+  text-shadow: 0 3px 3px rgba(255, 255, 255, 0.3);
+}
+
+
+
+@media screen and (max-width:767px) {
+    .taskDetailContent,
+    .taskDetailContentIcon{
+        margin-top:15px;
+    }
+    .taskdetailButtons {
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        margin-top: 10px !important;
+    }
+
+    .okBtn {
+        margin-left:5px !important;
+        width: 85px !important;
+    }
+
+    .notOkBtn {
+        width: 85px !important;
+    }
+}
+
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    .taskDetailContent,
+    .taskDetailContentIcon{
+        margin-top:15px;
+    }
+    .taskdetailButtons {
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        margin-top: 10px !important;
+    }
+
+    .okBtn {
+        margin-left:5px !important;
+        width: 85px !important;
+    }
+
+    .notOkBtn {
+        width: 85px !important;
+    }
+}
+
+.circle-card {
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  border:1px solid #E1E6EE
+}
+
+.sidebar-Sticky {
+  position: sticky !important;
+  top 125px !important;
+  z-index:100;
+}
+
+@media screen and (min-width:768px) {
+  .sidebar-Sticky {
+    position: sticky !important;
+    top 85px !important;
+    z-index:100;
+  }
+}
+
+
+.ProseMirror {
+  position: relative;
+}
+
+.ProseMirror {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+}
+
+.ProseMirror pre {
+  white-space: pre-wrap;
+}
+
+.ProseMirror li {
+  position: relative;
+}
+
+.ProseMirror-hideselection *::selection { background: transparent; }
+.ProseMirror-hideselection *::-moz-selection { background: transparent; }
+.ProseMirror-hideselection { caret-color: transparent; }
+
+.ProseMirror-selectednode {
+  outline: 2px solid #8cf;
+}
+
+/* Make sure li selections wrap around markers */
+
+li.ProseMirror-selectednode {
+  outline: none;
+}
+
+li.ProseMirror-selectednode:after {
+  content: "";
+  position: absolute;
+  left: -32px;
+  right: -2px; top: -2px; bottom: -2px;
+  border: 2px solid #8cf;
+  pointer-events: none;
+}
+.ProseMirror-textblock-dropdown {
+  min-width: 3em;
+}
+
+.ProseMirror-menu {
+  margin: 0 -4px;
+  line-height: 1;
+}
+
+.ProseMirror-tooltip .ProseMirror-menu {
+  width: -webkit-fit-content;
+  width: fit-content;
+  white-space: pre;
+}
+
+.ProseMirror-menuitem {
+  margin-right: 3px;
+  display: inline-block;
+}
+
+.ProseMirror-menuseparator {
+  border-right: 1px solid #ddd;
+  margin-right: 3px;
+}
+
+.ProseMirror-menu-dropdown, .ProseMirror-menu-dropdown-menu {
+  font-size: 90%;
+  white-space: nowrap;
+}
+
+.ProseMirror-menu-dropdown {
+  vertical-align: 1px;
+  cursor: pointer;
+  position: relative;
+  padding-right: 15px;
+}
+
+.ProseMirror-menu-dropdown-wrap {
+  padding: 1px 0 1px 4px;
+  display: inline-block;
+  position: relative;
+}
+
+.ProseMirror-menu-dropdown:after {
+  content: "";
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  opacity: .6;
+  position: absolute;
+  right: 4px;
+  top: calc(50% - 2px);
+}
+
+.ProseMirror-menu-dropdown-menu, .ProseMirror-menu-submenu {
+  position: absolute;
+  background: white;
+  color: #666;
+  border: 1px solid #aaa;
+  padding: 2px;
+}
+
+.ProseMirror-menu-dropdown-menu {
+  z-index: 15;
+  min-width: 6em;
+}
+
+.ProseMirror-menu-dropdown-item {
+  cursor: pointer;
+  padding: 2px 8px 2px 4px;
+}
+
+.ProseMirror-menu-dropdown-item:hover {
+  background: #f2f2f2;
+}
+
+.ProseMirror-menu-submenu-wrap {
+  position: relative;
+  margin-right: -4px;
+}
+
+.ProseMirror-menu-submenu-label:after {
+  content: "";
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid currentColor;
+  opacity: .6;
+  position: absolute;
+  right: 4px;
+  top: calc(50% - 4px);
+}
+
+.ProseMirror-menu-submenu {
+  display: none;
+  min-width: 4em;
+  left: 100%;
+  top: -3px;
+}
+
+.ProseMirror-menu-active {
+  background: #eee;
+  border-radius: 4px;
+}
+
+.ProseMirror-menu-active {
+  background: #eee;
+  border-radius: 4px;
+}
+
+.ProseMirror-menu-disabled {
+  opacity: .3;
+}
+
+.ProseMirror-menu-submenu-wrap:hover .ProseMirror-menu-submenu, .ProseMirror-menu-submenu-wrap-active .ProseMirror-menu-submenu {
+  display: block;
+}
+
+.ProseMirror-menubar {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  position: relative;
+  min-height: 1em;
+  color: #666;
+  padding: 1px 6px;
+  top: 0; left: 0; right: 0;
+  border-bottom: 1px solid silver;
+  background: white;
+  z-index: 10;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.ProseMirror-icon {
+  display: inline-block;
+  line-height: .8;
+  vertical-align: -2px; /* Compensate for padding */
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.ProseMirror-menu-disabled.ProseMirror-icon {
+  cursor: default;
+}
+
+.ProseMirror-icon svg {
+  fill: currentColor;
+  height: 1em;
+}
+
+.ProseMirror-icon span {
+  vertical-align: text-top;
+}
+.ProseMirror-gapcursor {
+  display: none;
+  pointer-events: none;
+  position: absolute;
+}
+
+.ProseMirror-gapcursor:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+  border-top: 1px solid black;
+  animation: ProseMirror-cursor-blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes ProseMirror-cursor-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.ProseMirror-focused .ProseMirror-gapcursor {
+  display: block;
+}
+/* Add space around the hr to make clicking it easier */
+
+.ProseMirror-example-setup-style hr {
+  padding: 2px 10px;
+  border: none;
+  margin: 1em 0;
+}
+
+.ProseMirror-example-setup-style hr:after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: silver;
+  line-height: 2px;
+}
+
+.ProseMirror ul, .ProseMirror ol {
+  padding-left: 30px;
+}
+
+.ProseMirror blockquote {
+  padding-left: 1em;
+  border-left: 3px solid #eee;
+  margin-left: 0; margin-right: 0;
+}
+
+.ProseMirror-example-setup-style img {
+  cursor: default;
+}
+
+.ProseMirror-prompt {
+  background: white;
+  padding: 5px 10px 5px 15px;
+  border: 1px solid silver;
+  position: fixed;
+  border-radius: 3px;
+  z-index: 11;
+  box-shadow: -.5px 2px 5px rgba(0, 0, 0, .2);
+}
+
+.ProseMirror-prompt h5 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 100%;
+  color: #444;
+}
+
+.ProseMirror-prompt input[type="text"],
+.ProseMirror-prompt textarea {
+  background: #eee;
+  border: none;
+  outline: none;
+}
+
+.ProseMirror-prompt input[type="text"] {
+  padding: 0 4px;
+}
+
+.ProseMirror-prompt-close {
+  position: absolute;
+  left: 2px; top: 1px;
+  color: #666;
+  border: none; background: transparent; padding: 0;
+}
+
+.ProseMirror-prompt-close:after {
+  content: "â";
+  font-size: 12px;
+}
+
+.ProseMirror-invalid {
+  background: #ffc;
+  border: 1px solid #cc7;
+  border-radius: 4px;
+  padding: 5px 10px;
+  position: absolute;
+  min-width: 10em;
+}
+
+.ProseMirror-prompt-buttons {
+  margin-top: 5px;
+  display: none;
+}
+// modified by Vihang
+// modifield on 18/02/2022
+// modfication:styling changes in editor
+
+#editor, .editor {
+  background: white;
+  color: black;
+  background-clip: padding-box;
+  border-radius: 4px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  // margin-bottom: 23px;
+}
+
+.ProseMirror p:first-child,
+.ProseMirror h1:first-child,
+.ProseMirror h2:first-child,
+.ProseMirror h3:first-child,
+.ProseMirror h4:first-child,
+.ProseMirror h5:first-child,
+.ProseMirror h6:first-child {
+  margin-top: 10px;
+}
+
+.ProseMirror {
+  padding: 0 8px 0 14px;
+  line-height: 1.2;
+  outline: none;
+}
+
+.ProseMirror p { margin-bottom: 1em }
+
+.gallery-container > a {
+  max-width: 200px;
+  max-height: 150px;
+  padding: 5px;
+  disply: inline-block;
+}
+
+
+ .sun-editor .se-btn {
+  height: 21px !important;
+  font-size: 10px !important;
+  line-height: 14px !important;
+}
+
+.sun-editor .se-btn-module-border {
+  background: #f0f8ff !important;
+}
+
+.sun-editor .se-svg, .sun-editor button>svg {
+  height: 11px !important;
+}
+
+  placeholder {
+    display: inline;
+    border: 1px solid #ccc;
+    color: #ccc;
+  }
+  placeholder:after {
+    content: "☁";
+    font-size: 200%;
+    line-height: 0.1;
+    font-weight: bold;
+  }
+  .ProseMirror img { max-width: 100px }
+
+.HideInput {
+  display: none ;
+}
+
+.ImageSize {
+  width: 1em ;
+  height: 1em ;
+  cursor: pointer ;
+}
+
+// modified by Vihang
+// modified at 06/05/2022
+// modification : checklist ok and not ok button  as well as text color change
+
+.checkListOkText {
+	text-decoration: line-through #4b4d51;
+}
+
+.checkListOkButton {
+	background-color: #008000 !important;
+	border-color: #008000 !important;
+	color: #fff !important;
+}
+.checkListNotOkText {
+	text-decoration: line-through #4b4d51;
+}
+
+.checkListNotOkButton {
+	background-color: #f00 !important;
+	border-color: #f00 !important;
+	color: #fff !important;
+}
+
+.answeredCount {
+	color: var(--card-primary-color);
+}
+
+.checklist-container {
+	font-size: 12px;
+	font-weight: normal;
+	padding-left: 17px;
+}
+
+
+// modified by Vihang
+// modified at 29/04/2022
+// modification : classes for checklist semidetail view section
+
+.checklist-detail-container {
+	height: calc(100vh - 160px);
+}
+
+.checklist-card-container {
+	border-radius: 5px;
+	height: inherit;
+	padding: 5px;
+	border: 1px solid #e5e9f1;
+}
+
+.checklist-chat-container {
+	height: calc(100vh - 92px - 367px);
+}
+
+.checklistCardsList {
+	height: calc(662px - 292px);
+	overflow: hidden auto;
+}
+
+.selectedChecklistNavigation {
+	position:absolute;
+	top:0;
+	right:8px;
+	button {
+		border-radius: 50%;
+		min-width: 35px;
+		width:35px;
+		height: 35px;
+	}
+}
+
+.checklistStatus {
+	position: absolute;
+	top: 5px;
+	left: 5%;
+}
+
+.semi-detail-remarks {
+	position:absolute;
+	bottom:0;
+	width:100%;
+}
+// modified by Vihang
+// modified at 06/05/2022
+// modification :  necessary classes added for selected and not selected checklist ui revamp, alignment changes and responsive changes
+
+/*
+			modified by Vihang
+			modified at 05/05/2022
+			modification : checklist height corrections
+*/
+/*
+			modified by Vihang
+			modified at 23/05/2022
+			modification : overview height corrections for mobile 
+*/
+@media (min-width:320px) and (max-width:425px)  {
+	.Overviewworkshop {
+	    height: calc(100vh - 220px) !important;
+	}
+	/*
+					modified by Vihang
+					modified at 13/05/2022
+					modification : checklist height corrections for mobile view
+		*/
+
+	.checklist-detail-container {
+		height: calc(100vh - 265px);
+	}
+
+	.checklist-chat-container {
+		height: calc(100vh - 92px - 517px);
+	}
+
+	.goBackToChecklistButton {
+		font-size:16px;
+	}
+	// Modified by Vihang Kale
+	// Modified on:17/05/2021
+	// Modification :mobile view height adjustment
+
+	.checklistCardsList {
+		height: calc(662px - 240px);
+		overflow: hidden auto;
+	}
+	.checklistStatus {
+		position: absolute;
+		top: 5px;
+		left: 10%;
+	}
+}
+
+// Modified by Vihang Kale
+// Modified on:16/05/2021
+// Modification : 1600px and 1440pxchecklist height adjustment
+
+// Modified by Vihang Kale
+// Modified on:13/05/2021
+// Modification : macbook air resolution checklist height adjustment
+// Modified by Vihang Kale
+// Modified on:17/05/2021
+// Modification : mentioned resolution of checklist height adjustment handled
+
+
+@media only screen and (min-width:1024px)  and (max-width:1279px) {
+	.checklistCardsList {
+			height: calc(662px - 410px);
+			overflow: hidden auto;
+	}
+}
+
+@media only screen and (min-width:1280px) and (max-width:1330px)  {
+	.checklistCardsList {
+		height: (662px - 371px)  !important;
+		overflow: hidden auto;
+	}
+}
+
+@media only screen and (min-width:1440px)  {
+	.checklistCardsList {
+		height: 788px !important;
+		overflow: hidden auto;
+	}
+}
+
+@media only screen and (min-width:1920px)  {
+	.checklistCardsList {
+		height: 788px !important;
+		overflow: hidden auto;
+	}
+}
+@media (min-width:1600px)  {
+	.checklistCardsList {
+		height: calc(662px - 177px);
+		overflow: hidden auto;
+	}
+}
+@media only screen and (min-width:2560px)  {
+	.checklistCardsList {
+		height: 788px  !important;
+		overflow: hidden auto;
+	}
+}

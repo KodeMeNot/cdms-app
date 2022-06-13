@@ -1,0 +1,97 @@
+// color names taken from https://flatuicolors.com
+
+.c-progress-steps {
+	margin: 0;
+	list-style-type: none;
+
+		li {
+			position: relative;
+			font-size: 13px;
+			color: #7f8c8d;
+			//padding: 2px 0 2px 23px;
+			padding: 2px 13px 13px 13px !important;
+			border: 0.5px dotted;
+
+				a {
+					color: inherit;
+				}
+
+				&.done {
+					color: #2ecc71;
+
+					&:before {
+						color: #2ecc71;
+						content:"\2713";
+					}
+				}
+
+				&.current {
+					color: #3498db;
+					//font-weight: bold;
+
+					&:before {
+						color: #3498db;
+						content: "\f192";
+					}
+				}
+
+				&:before {
+					position: absolute;
+					left: 0;
+					font-size: 22px;
+          //border-radius: 50%;
+          width: 17px;
+					background-color: #fff;
+					content: "\2205";
+
+					@media all and (max-width: 600px) {
+						top: calc(50% - 8px);
+						font-size: 16px;
+					}
+				}
+		}
+
+	@media all and (min-width: 600px)  {
+		display: table;
+		list-style-type: none;
+		margin: 20px auto;
+		padding: 0;
+
+		width: 100%;
+
+		li {
+			display: table-cell;
+			text-align: center;
+			padding: 0;
+			padding-bottom: 10px;
+			white-space: nowrap;
+			position: relative;
+			border-left-width: 0;
+			border-bottom-width: 4px;
+			border-bottom-style: solid;
+			border-bottom-color: #7f8c8d;
+
+				&.done {
+					border-bottom-color: #2ecc71;
+				}
+
+				&.current {
+					color: #3498db;
+					font-size: 14px;
+					//line-height: 14px;
+					border-bottom-color: #3498db;
+
+					&:before {
+						color: #3498db;
+						content: "\f192";
+					}
+				}
+
+				&:before {
+					bottom: -14px;
+					left: 50%;
+					margin-left: -9px;
+				}
+		}
+	}
+}

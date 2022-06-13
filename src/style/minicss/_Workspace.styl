@@ -1,0 +1,72 @@
+.innerscrollworkspace {
+  height: 100vh;
+  overflow-y: auto;
+  background: #fbfbfb;
+  padding-bottom: 1rem;
+}
+.Workspacehead {
+  letter-spacing: 1px;
+  position: sticky;
+  z-index: 20;
+  padding-top: 20px;
+  display: flex;
+  top: 0.1px;
+  background: #fbfbfb;
+  color: var(--page-header-text-color);
+  font-weight: 400;
+}
+
+.Profileworkshop {
+  display: flex;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.workspace-cards, .workspace-cards-hover {
+  display: flex;
+  position: relative;
+  border: 1px solid #dfebf0;
+  box-shadow: 0px 1px 3px 1px #e5e5e5;
+  border-radius: 5px;
+  margin-top: 20px;
+  flex-direction: column;
+  background: #fff;
+  padding: 10px;
+}
+
+.workspace-cards-hover {
+  cursor: pointer;
+  &:hover {
+    box-shadow: -2px 7px 3px 1px #e5e5e5;
+  }
+}
+
+.teamscroll {
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.filterteamborder {
+  background: var(--button-primary);
+  border: 1px solid #dfebf0;
+  border-radius: 12px;
+  padding: 4px;
+  color: var(--text-white);
+  &:hover {
+		background-color: var(--button-primary-hover);
+	}
+}
+
+.round_iconteams {
+  display: flex;
+  width: 25px;
+  border-radius: 50%;
+  height: 25px;
+  background: var(--button-primary);
+  cursor: pointer;
+  justify-content: center;
+  padding-top: 3px;
+	p {
+		color: var(--text-white);
+	}
+}
